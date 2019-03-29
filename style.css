@@ -1,0 +1,120 @@
+
+body {
+	background-color: #CAE4DB;
+}
+
+/*div general*/
+.contenedor{
+	display: flex;
+	flex-flow: column;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	right: 0px;
+	width: 100%;
+}
+
+/*div header*/
+header{
+	display: flex;
+	flex-flow: row;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #00303F;
+	color: white;
+	height: 50px;
+}
+
+/*Navegacion lateral izquierda*/
+nav {
+	display:flex;
+	flex-flow: column;
+	height: 100%;
+	width: 23%;
+	border-right: 3px groove #00303F;
+	background-color: #7A9D96;
+}
+
+/*  LOGO  */
+/*--------------------------------------------*/
+/*div logo*/
+#logo{
+	display: flex;
+	padding: 0px 15px;
+	text-decoration: none;
+	flex-grow: 0.5;
+	justify-content: center;
+	border-radius: 15px;
+}
+
+#logo:active{
+	background-color: #7A9D96;
+}
+
+/*logo letras*/
+#logo p{
+	font-size: 25px;
+	color: white;
+}
+
+/*--------------------------------------------*/
+
+
+/*  BUSCADOR  */
+/*--------------------------------------------*/
+
+/*div buscador*/
+#formCabecera{
+	display: flex;
+	flex-grow: 4;
+	justify-content: center;
+}
+
+/*Barra buscador*/
+#formCabecera input{
+	height: 2.5em;
+	width: 35em;
+	border-radius: 15px;
+	padding-left: 15px;
+	
+}
+
+#formCabecera input:focus{
+	border: 4px solid #DCAE1D;
+}
+/*--------------------------------------------*/
+
+/*  ENLACES */
+/*--------------------------------------------*/
+/*div enlaces*/
+#enlaces{
+	display: flex;
+
+	flex-grow: 1;
+	justify-content: center;
+	padding-right: 10px;
+	font-size: 18px;
+}
+
+/*botones enlaces*/
+#enlaces a{
+	text-decoration: none;
+	padding: 26px 20px;
+	border-radius: 15px;
+	color: white;
+}
+
+#enlaces a:hover{
+	
+	background-color: #7A9D96;
+}
+
+/*--------------------------------------------*/
+
+/* BARRA LATERAL */
+/*--------------------------------------------*/
+
+
+
+
