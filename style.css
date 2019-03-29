@@ -1,6 +1,10 @@
 /*Con un display flex, justify-content: center, lo centra en el eje X,
 align-items: center en el eje Y*/
 
+*{
+	margin: 0;
+	padding: 0;
+}
 
 body {
 	background-color: #CAE4DB;
@@ -10,18 +14,16 @@ body {
 .contenedor{
 	display: flex;
 	flex-flow: column;
-	position: fixed;
-	top: 0px;
-	left: 0px;
-	bottom: 0px;
-	right: 0px;
-	width: 100%;
 }
 
 /*div header*/
 header{
 	display: flex;
 	flex-flow: row;
+	/*Esto permite que se quede sticky la barra*/
+	position: sticky;
+	top: 0;
+	/*------------------------------------------*/
 	align-items: center;
 	justify-content: space-between;
 	background-color: #00303F;
@@ -100,10 +102,11 @@ header{
 /* CONTENIDO */
 /*--------------------------------------------*/
 
-.main {
+main {
 	display: flex;
 	flex-flow: row;
-	height: 100%;
+	min-height: 557px;
+
 }
 
 /*--------------------------------------------*/
@@ -112,15 +115,15 @@ header{
 /*--------------------------------------------*/
 
 
-.main #leftSideBar{
-	display:flex;
+main #leftSideBar{
+	display: flex;
 	flex-flow: column;
 	width: 19%;
-	border-right: 3px groove #00303F;
+	border-right: 5px groove #00303F;
 	background-color: #7A9D96;
 }
 
-.main #leftSideBar a{
+main #leftSideBar a{
 	display: flex;
 	text-decoration: none;
 	padding: 15px;
@@ -130,9 +133,9 @@ header{
 	font-size: 20px;
 }
 
-.main #leftSideBar a:hover{
+main #leftSideBar a:hover{
 	background-color: #025E7A;
-	width: 80%;
+	width: 75%;
 	border: 3px groove #00303F;
 	padding-left: 20%;
 }
@@ -142,8 +145,24 @@ header{
 /* CONTENIDO PRINCIPAL */
 /*--------------------------------------------*/
 
-.main #content{
-	padding-left: 2em;
+main #content{
+	display: flex;
+	flex-flow: column;
+  margin: 1.10%;
+	background-color: #7A9D96;
+	border: 5px groove #00303F;
+	border-radius: 15px;
+	width: 100%;
+}
+
+footer{
+	display: flex;
+	flex-flow: row;
+	justify-content: space-between;
+	font-size: 0.75em;
+	padding: 15px 15px;
+	background-color: #00303F;
+	color: white;
 }
 
 
