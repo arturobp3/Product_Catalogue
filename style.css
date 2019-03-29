@@ -38,7 +38,6 @@ header{
 	display: flex;
 	padding: 0px 15px;
 	text-decoration: none;
-	flex-grow: 0.5;
 	justify-content: center;
 	border-radius: 15px;
 }
@@ -58,7 +57,6 @@ header{
 /*div buscador*/
 #formCabecera{
 	display: flex;
-	flex-grow: 4;
 	justify-content: center;
 }
 
@@ -80,7 +78,6 @@ header{
 /*div enlaces*/
 #enlaces{
 	display: flex;
-	flex-grow: 1;
 	justify-content: end;
 	font-size: 18px;
 }
@@ -105,7 +102,7 @@ header{
 main {
 	display: flex;
 	flex-flow: row;
-	min-height: 557px;
+	min-height: 100vh;
 
 }
 
