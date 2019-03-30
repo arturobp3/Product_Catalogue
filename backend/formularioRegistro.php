@@ -21,21 +21,34 @@ class formularioRegistro extends Form{
 
         $html = '<div class="grupo-control"><h1> Registrarse </h1></div>';
 
+        $html .= '<div class="line-1">';
         $html .= '<div class="grupo-control">';
-        $html .= '<p>Nombre de usuario:</p> <input type="text" name="username" />';
+        $html .= '<p>Nombre de usuario</p> <input type="text" name="username" />';
         $html .= '</div>';
 
         $html .= '<div class="grupo-control">';
-        $html .= '<p>Email:</p> <input type="text" name="email" />';
+        $html .= '<p>Contraseña</p> <input type="password" name="password" />';
         $html .= '</div>';
 
         $html .= '<div class="grupo-control">';
-        $html .= '<p>Password:</p> <input type="password" name="password" />';
+        $html .= '<p>Repite contraseña</p> <input type="password" name="password2" />';
+        $html .= '</div>';
+        $html .= '</div>'; //Se cierra line-1
+
+        $html .= '<div class="line-2">';
+        $html .= '<div class="grupo-control">';
+        $html .= '<p>Nombre</p> <input type="text" name="name" />';
         $html .= '</div>';
 
         $html .= '<div class="grupo-control">';
-        $html .= '<p>Vuelve a introducir el Password:</p> <input type="password" name="password2" />';
+        $html .= '<p>Apellidos</p> <input type="text" name="lastname" />';
         $html .= '</div>';
+
+        $html .= '<div class="grupo-control">';
+        $html .= '<p>Email</p> <input type="text" name="email" />';
+        $html .= '</div>';
+        $html .= '</div>'; //Se cierra line-2
+
 
         $html .= '<div class="grupo-control"><button type="submit" name="registro">Registrar</button></div>';
 
@@ -65,15 +78,6 @@ class formularioRegistro extends Form{
             $erroresFormulario[] = "Los passwords deben coincidir";
         }
 
-        $accept = isset($_POST['accept']) ? $_POST['accept'] : null; 
-        if (empty($accept) || !$accept){
-            $erroresFormulario[] = "Debes acceptar los términos y condiciones.";
-        }
-
-        $robot = isset($_POST['robot']) ? $_POST['robot'] : null;
-        if (empty($robot) || !$robot){
-            $erroresFormulario[] = "Debes confirmar que no eres un robot.";
-        }
         
         if (count($erroresFormulario) === 0) {
             $usuario = Usuario::crea($username, $email, $password, 'normal');

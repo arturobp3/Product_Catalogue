@@ -140,11 +140,8 @@ abstract class Form
         $html .= '<input type="hidden" name="action" value="'.$this->formId.'" />';
 
         $html .= $this->generaCamposFormulario($datos);
+        $html .= $this->generaListaErrores($errores);
         $html .= '</form>';
-
-        $html .= '<div id="errores">'
-                    .$this->generaListaErrores($errores).
-                '</div>';
 
         return $html;
     }
