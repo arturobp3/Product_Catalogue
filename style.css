@@ -13,13 +13,19 @@ body {
 /*div general*/
 .contenedor{
 	display: flex;
-	flex-flow: column;
+	flex-direction: column;
+	
+	/*Este space between permite alejar el footer
+	al final. Con un flex-grow en el main hacemos mas grande
+	este*/
+	justify-content: space-between;
+	min-height: 100vh;
 }
 
 /*div header*/
 header{
 	display: flex;
-	flex-flow: row;
+	flex-direction: row;
 	/*Esto permite que se quede sticky la barra*/
 	position: sticky;
 	top: 0;
@@ -101,9 +107,8 @@ header{
 
 main {
 	display: flex;
-	flex-flow: row;
-	min-height: 100vh;
-
+  flex-grow: 2;
+	flex-direction: row;
 }
 
 /*--------------------------------------------*/
@@ -114,7 +119,7 @@ main {
 
 main #leftSideBar{
 	display: flex;
-	flex-flow: column;
+	flex-direction: column;
 	width: 19%;
 	border-right: 5px groove #00303F;
 	background-color: #7A9D96;
@@ -144,7 +149,7 @@ main #leftSideBar a:hover{
 
 main #content{
 	display: flex;
-	flex-flow: column;
+	flex-direction: column;
   margin: 1.10%;
 	background-color: #7A9D96;
 	border: 5px groove #00303F;
@@ -154,7 +159,7 @@ main #content{
 
 footer{
 	display: flex;
-	flex-flow: row;
+	flex-direction: row;
 	justify-content: space-between;
 	font-size: 0.75em;
 	padding: 15px 15px;
