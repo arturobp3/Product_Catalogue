@@ -122,6 +122,7 @@ main #leftSideBar{
 }
 
 main #leftSideBar a{
+
 	display: flex;
 	text-decoration: none;
 	padding: 15px;

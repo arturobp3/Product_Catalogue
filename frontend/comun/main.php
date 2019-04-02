@@ -4,10 +4,7 @@
 			if (isset($_SESSION["login"]) && ($_SESSION["login"]===true)){
 			
 				require_once('comun/sideBarIzq.php');
-
-				echo '<div id="content">
-						<p>Articulos random</p>
-					</div>';
+				require_once('comun/contentMain.php');
 			}
 			else{
 				echo '<div id="panelVacio">

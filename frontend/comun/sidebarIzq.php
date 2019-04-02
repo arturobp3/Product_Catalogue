@@ -1,7 +1,9 @@
 <div id="leftSideBar">
-    <a href="#">Moda</a>
-    <a href="#">Informática</a>
-    <a href="#">Música</a>
-    <a href="#">Libros</a>
-    <a href="#">Deportes</a>
+
+    <a href="../backend/procesarCategoria.php?categoria=moda">Moda</a>
+    <a href="../backend/procesarCategoria.php?categoria=informatica">Informática</a>
+    <a href="../backend/procesarCategoria.php?categoria=musica">Música</a>
+    <a href="../backend/procesarCategoria.php?categoria=libros">Libros</a>
+    <a href="../backend/procesarCategoria.php?categoria=deportes">Deportes</a>
+
 </div>
