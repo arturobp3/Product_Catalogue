@@ -22,7 +22,7 @@ class formularioLogin extends Form{
         
         $html = '<div class="grupo-control"><h1> Iniciar Sesión </h1></div>';
         $html .= '<div class="grupo-control">';                            
-        $html .= '<p>Nombre de cliente</p> <input type="text" name="nombrecliente" />';
+        $html .= '<p>Nombre de usuario</p> <input type="text" name="nombrecliente" />';
         $html .= '</div>';
         $html .= '<div class="grupo-control">';
         $html .= '<p>Contraseña</p> <input type="password" name="password" />';

@@ -3,20 +3,20 @@
 
 require_once("../backend/producto.php");
 
-
 ?>
 
 <div id="content">
 <?php
 
-	if( isset($_SESSION["queryProductos"])){
+	if( isset($_SESSION["queryProductos"]) && $_SESSION["queryProductosCorrecta"] === true){
 
-		$result = $_SESSION["queryProductos"];
+		$result = unserialize($_SESSION["queryProductos"]);
 
 		foreach ($result as $key => $value) {
 			echo 	"<div class='panelProducto'>
-						<p> Hola </p>
-					</div>";	
+
+						<a href='#'>".$value->name()."</a>
+					</div>";
 		}
 
 		//<img id='producto' src='.$value.'>*/
@@ -27,9 +27,10 @@ require_once("../backend/producto.php");
 		echo "NO";
 		//Aqui deberian salir productos random
 
+
 		//header('Location: procesarRandom.php');
 	}
 
 
 ?>
-</div>';
+</div>

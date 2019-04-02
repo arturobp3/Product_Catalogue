@@ -84,7 +84,7 @@ class formularioRegistro extends Form{
 
         $username = isset($_POST['username']) ? $_POST['username'] : null;
         if ( empty($username) || mb_strlen($username) < 5 ) {
-            $erroresFormulario[] = "El nombre de cliente tiene que tener una longitud de al menos 5 caracteres.";
+            $erroresFormulario[] = "El nombre de usuario tiene que tener una longitud de al menos 5 caracteres.";
         }
         
         $email = isset($_POST['email']) ? $_POST['email'] : null;

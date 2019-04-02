@@ -26,7 +26,13 @@
 			break;
 	}
 
+	if($_SESSION["queryProductos"] === "noCategory"){
+		$_SESSION["queryProductosCorrecta"] = false;
+	}
+	else{
+		$_SESSION["queryProductos"] = serialize($result);
+		$_SESSION["queryProductosCorrecta"] = true;
+	}
 
-	$_SESSION["queryProductos"] = $result;
 
 	header('Location: ../frontend/index.php');
