@@ -71,8 +71,7 @@ CREATE TABLE Producto (
 	nombre varchar(80) NOT NULL,
 	cantidad int(32) NOT NULL,
 	categoria varchar(32) NOT NULL,
-	informacion text, 
-	url_imagen varchar(255),
+	informacion text,
 	marca varchar(32),
 	precioEuros int(32),
 

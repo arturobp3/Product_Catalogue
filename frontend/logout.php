@@ -24,9 +24,9 @@ session_destroy();
 	<div class="contenedor">
 
 		<?php 
-			require("../backend/comun/cabecera.php");
-			require("../backend/comun/main.php"); 
-			require("../backend/comun/pie.php");
+			require("comun/cabecera.php");
+			require("comun/main.php"); 
+			require("comun/pie.php");
 		?>
 
 	</div>

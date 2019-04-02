@@ -17,7 +17,7 @@
 
 	<div class="contenedor">
 
-		<?php require("../backend/comun/cabecera.php"); ?>
+		<?php require("comun/cabecera.php"); ?>
 
 		<main>
 
@@ -30,7 +30,7 @@
 
 		</main>
 			
-		<?php require("../backend/comun/pie.php");?>
+		<?php require("comun/pie.php");?>
 
 
 	</div>
