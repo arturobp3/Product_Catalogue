@@ -3,7 +3,7 @@
     <?php
 			if (isset($_SESSION["login"]) && ($_SESSION["login"]===true)){
 			
-				require_once('backend/comun/sideBarIzq.php');
+				require_once('../backend/comun/sideBarIzq.php');
 
 				echo '<div id="content">
 						<p>Articulos random</p>

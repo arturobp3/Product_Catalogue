@@ -1,7 +1,7 @@
 <?php
 
-	require_once("includes/config.php");
-	require_once("includes/usuario.php");
+	require_once("../backend/config.php");
+	require_once("../backend/cliente.php");
 
 ?>
 <!DOCTYPE html>
@@ -33,11 +33,11 @@
 	                	</div>
 	                	<div id="perfil">
 							<?php
-								$usuario = Usuario::BuscaUsuario($_SESSION["nombre"]);
+								$cliente = cliente::Buscacliente($_SESSION["nombre"]);
 								//echo "Nombre: ".$_SESSION["nombre"];
 
-								echo "<p>Nombre: ".$usuario->username()."</p>";
-								$rango = $usuario->rol();
+								echo "<p>Nombre: ".$cliente->username()."</p>";
+								$rango = $cliente->rol();
 								echo "<p>Rango: ".$rango."</p>";
 
 							?>
@@ -46,7 +46,7 @@
 					<div id="panel-memes">
 						<h3>Memes</h3>
 						<?php
-							$rtMemes= Usuario::memes($usuario->username());
+							$rtMemes= cliente::memes($cliente->username());
 							
 							if($rtMemes){
 								foreach ($rtMemes as $key => $value) {

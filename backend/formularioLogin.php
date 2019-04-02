@@ -1,7 +1,7 @@
 <?php
 
 require_once('form.php');
-require_once('usuario.php');
+require_once('cliente.php');
 
 
 class formularioLogin extends Form{
@@ -22,7 +22,7 @@ class formularioLogin extends Form{
         
         $html = '<div class="grupo-control"><h1> Iniciar Sesión </h1></div>';
         $html .= '<div class="grupo-control">';                            
-        $html .= '<p>Nombre de usuario</p> <input type="text" name="nombreUsuario" />';
+        $html .= '<p>Nombre de cliente</p> <input type="text" name="nombrecliente" />';
         $html .= '</div>';
         $html .= '<div class="grupo-control">';
         $html .= '<p>Contraseña</p> <input type="password" name="password" />';
@@ -36,10 +36,10 @@ class formularioLogin extends Form{
 
         $erroresFormulario = array();
 
-        $username = isset($datos['nombreUsuario']) ? $datos['nombreUsuario'] : null;
+        $username = isset($datos['nombrecliente']) ? $datos['nombrecliente'] : null;
 
         if ( empty($username) ) {
-            $erroresFormulario[] = "El nombre de usuario no puede estar vacío";
+            $erroresFormulario[] = "El nombre de cliente no puede estar vacío";
         }
 
         $password = isset($datos['password']) ? $datos['password'] : null;
@@ -51,20 +51,20 @@ class formularioLogin extends Form{
             //$app esta incluido en config.php
 
 
-            $usuario = Usuario::buscaUsuario($username);
+            $cliente = cliente::buscacliente($username);
 			
-            if (!$usuario) {
-                $erroresFormulario[] = "El usuario o el password no coinciden";
+            if (!$cliente) {
+                $erroresFormulario[] = "El cliente o el password no coinciden";
             }
             else{
-                if ($usuario->compruebaPassword($password)) {
+                if ($cliente->compruebaPassword($password)) {
                     $_SESSION['login'] = true;
-                    $_SESSION['nombre'] = $username;
-                    $_SESSION['esAdmin'] = strcmp($fila['rol'], 'admin') == 0 ? true : false;
-                    //header('Location: index.php');
+                    $_SESSION['cliente'] = $cliente;
+
+
                     return "index.php";
                 } else {
-                    $erroresFormulario[] = "El usuario o el password no coinciden";
+                    $erroresFormulario[] = "El cliente o el password no coinciden";
                 }
             }
         }

@@ -5,10 +5,10 @@ require_once('aplicacion.php');
 /**
  * Parámetros de conexión a la BD MySQL
  */
-/*define('BD_HOST', 'localhost');
+define('BD_HOST', 'localhost');
 define('BD_NAME', 'product_catalog');
 define('BD_USER', 'root');
-define('BD_PASS', '');*/
+define('BD_PASS', '');
 
 
 /**
@@ -20,12 +20,12 @@ setlocale(LC_ALL, 'es_ES.UTF.8');
 date_default_timezone_get();
 
 // Inicializa la aplicación
-//$app = Aplicacion::getInstance();
+$app = Aplicacion::getInstance();
 
-//$app->init(array('host'=>BD_HOST, 'bd'=>BD_NAME, 'user'=>BD_USER, 'pass'=>BD_PASS));
+$app->init(array('host'=>BD_HOST, 'bd'=>BD_NAME, 'user'=>BD_USER, 'pass'=>BD_PASS));
 
 
-//register_shutdown_function(array($app, 'shutdown'));
+register_shutdown_function(array($app, 'shutdown'));
 
 
 /**

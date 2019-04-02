@@ -1,7 +1,7 @@
 <?php
 	//Inicio del procesamiento
 
-	//require_once("backend/config.php");
+	require_once("../backend/config.php");
 	require_once("../backend/formularioLogin.php");
 ?>
 

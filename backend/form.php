@@ -10,7 +10,7 @@ abstract class Form
 
     /**
      * @var string Cadena utilizada como valor del atributo "id" de la etiqueta &lt;form&gt; asociada al formulario y 
-     * como parámetro a comprobar para verificar que el usuario ha enviado el formulario.
+     * como parámetro a comprobar para verificar que el cliente ha enviado el formulario.
      */
     private $formId;
 
@@ -43,7 +43,7 @@ abstract class Form
      * </table>
 
      * @param string $formId    Cadena utilizada como valor del atributo "id" de la etiqueta &lt;form&gt; asociada al
-     *                          formulario y como parámetro a comprobar para verificar que el usuario ha enviado el formulario.
+     *                          formulario y como parámetro a comprobar para verificar que el cliente ha enviado el formulario.
      *
      * @param array $opciones (ver más arriba).
      */
@@ -100,10 +100,10 @@ abstract class Form
     /**
      * Procesa los datos del formulario.
      *
-     * @param string[] $datos Datos enviado por el usuario (normalmente <code>$_POST</code>).
+     * @param string[] $datos Datos enviado por el cliente (normalmente <code>$_POST</code>).
      *
      * @return string|string[] Devuelve el resultado del procesamiento del formulario, normalmente una URL a la que
-     * se desea que se redirija al usuario, o un array con los errores que ha habido durante el procesamiento del formulario.
+     * se desea que se redirija al cliente, o un array con los errores que ha habido durante el procesamiento del formulario.
      */
     protected function procesaFormulario($datos)
     {
@@ -112,7 +112,7 @@ abstract class Form
     }
   
     /**
-     * Función que verifica si el usuario ha enviado el formulario.
+     * Función que verifica si el cliente ha enviado el formulario.
      * Comprueba si existe el parámetro <code>$formId</code> en <code>$params</code>.
      *
      * @param string[] $params Array que contiene los datos recibidos en el envío formulario.

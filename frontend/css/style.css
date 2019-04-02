@@ -192,7 +192,7 @@ main #formInicial .grupo-control button{
 	border-radius: 15px;
 	background-color: #7A9D96;
 	border: 3px solid #00303F;
-	padding: 10px;
+	padding: 15px;
 	font-weight: bolder;
 }
 
@@ -205,6 +205,8 @@ main #formInicial .grupo-control button:hover{
 main #formInicial #registro .line-1, .line-2{
 	display: flex;
 	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
 }
 
 
