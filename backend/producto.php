@@ -52,7 +52,6 @@ class Producto {
     public static function buscarPorCategoria($category){
         $app = Aplicacion::getInstance();
 
-        var_dump($app);
         $conn = $app->conexionBD();
 
         $query = sprintf("SELECT * FROM producto U WHERE U.categoria = '%s'", $conn->real_escape_string($category));
@@ -64,7 +63,7 @@ class Producto {
 
                 for($i = 0; $i < $rs->num_rows; $i++){
                     $fila = $rs->fetch_assoc();
-                    $producto = new Producto($fila['nombre'], $fila['categoria'], $fila['cantidad'],
+                    $producto = new Producto($fila['nombre'],  $fila['cantidad'], $fila['categoria'],
                                         $fila['marca'], $fila['precioEuros']);
                     $producto->id = $fila['id'];
 
@@ -82,18 +81,6 @@ class Producto {
     }
 
     
-    /*
-    public static function crea($username, $password, $email, $name, $lastname, $address){
-        $user = self::buscacliente($username);
-        if ($user) {
-            return false;
-        }
-        $user = new cliente($username, password_hash($password, PASSWORD_DEFAULT),
-                            $email, $name, $lastname, $address);
-
-
-        return self::guarda($user);
-    }*/
     
     
     public static function actualizaCantidad($producto, $cantidad){

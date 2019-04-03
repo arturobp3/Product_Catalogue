@@ -51,22 +51,12 @@ class formularioLogin extends Form{
             //$app esta incluido en config.php
 
 
-            $cliente = cliente::buscacliente($username);
+            $cliente = cliente::login($username, $password);
 			
             if (!$cliente) {
                 $erroresFormulario[] = "El cliente o el password no coinciden";
             }
-            else{
-                if ($cliente->compruebaPassword($password)) {
-                    $_SESSION['login'] = true;
-                    $_SESSION['cliente'] = $cliente;
-
-
-                    return "index.php";
-                } else {
-                    $erroresFormulario[] = "El cliente o el password no coinciden";
-                }
-            }
+            else return "index.php";
         }
 
         return $erroresFormulario;

@@ -1,65 +1,39 @@
 <?php
-
+	//Inicio del procesamiento
 	require_once("../backend/config.php");
-	require_once("../backend/cliente.php");
-
+	require_once("../backend/formularioPerfil.php");
 ?>
+
 <!DOCTYPE html>
-	<html>
-		<head>
-			<link rel="stylesheet" type="text/css" href="css/estilo.css" />
-			<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-			<title>Perfil | Asteyo</title>
-		</head>
-		<body>
-			<?php
+<html lang="es">
+<head>
+	<title>Perfil | Product Catalog</title>
+	<meta charset="UTF-8">
 
-			require("includes/comun/cabecera.php");
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
 
-		?>
+	<div class="contenedor">
 
-			<div class="principal">
+		<?php require("comun/cabecera.php"); ?>
 
-				<?php require("includes/comun/sidebarIzq.php"); ?>
+		<main>
 
-				<div id="contenido">						
-					<a href='editarPerfil.php' id='edit'>Editar</a>
-					<div id="panel-perfil">
-						<div id="foto">
-						<?php
-							$imgPerfil = "mysql/img/".$_SESSION["nombre"]."/fotoPerfil.jpg";
-							echo '<img id="img-perfil" src='.$imgPerfil.'>';
-						?>
-	                	</div>
-	                	<div id="perfil">
-							<?php
-								$cliente = cliente::Buscacliente($_SESSION["nombre"]);
-								//echo "Nombre: ".$_SESSION["nombre"];
-
-								echo "<p>Nombre: ".$cliente->username()."</p>";
-								$rango = $cliente->rol();
-								echo "<p>Rango: ".$rango."</p>";
-
-							?>
-						</div>
-					</div>
-					<div id="panel-memes">
-						<h3>Memes</h3>
-						<?php
-							$rtMemes= cliente::memes($cliente->username());
-							
-							if($rtMemes){
-								foreach ($rtMemes as $key => $value) {
-									echo '<img id="meme"src='.$value.'>';
-								}
-							}
-						?>
-					</div>
+			<div class="content">
+				<div id="formInicial">
+					<?php
+						$formulario = new formularioPerfil("perfil");
+						$formulario->gestiona();
+					?>
 				</div>
-
 			</div>
 
-		<?php require("includes/comun/pie.php"); ?>
-		</body>
-	</html>
+		</main>
+			
+		<?php require("comun/pie.php");?>
 
+	</div>
+
+</body>
+</html>

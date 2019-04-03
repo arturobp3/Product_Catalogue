@@ -3,22 +3,10 @@
 require_once('form.php');
 require_once('cliente.php');
 
-class formularioRegistro extends Form{
+class formularioPerfil extends Form{
 
     public function  __construct($formId, $opciones = array() ){
         parent::__construct($formId, $opciones);
-    }
-
-    private function validarDatos($dato, &$errores, $patron, $infoDato){
-        if (!preg_match($patron , $dato)) {
-            $errores[] = $infoDato . " contiene caracteres inválidos.";
-
-        } else if (strlen($dato) > 32) {
-            $errores[] = $infoDato . " solo puede contener hasta 32 caracteres.";
-
-        } else if (strlen($dato) < 3) {
-            $errores[] = $infoDato . " debe tener al menos 3 caracteres.";
-        }
     }
 
 
@@ -31,45 +19,74 @@ class formularioRegistro extends Form{
      */
     protected function generaCamposFormulario($datosIniciales){
 
-        $html = '<div class="grupo-control"><h1> Registrarse </h1></div>';
+        $datos = unserialize($_SESSION['cliente']);
 
-        $html .= '<div class="line-1">';
-        $html .= '<div class="grupo-control">';
-        $html .= '<p>Nombre de usuario</p> <input type="text" name="username" />';
-        $html .= '</div>';
-
-        $html .= '<div class="grupo-control">';
-        $html .= '<p>Contraseña</p> <input type="password" name="password" />';
-        $html .= '</div>';
-
-        $html .= '<div class="grupo-control">';
-        $html .= '<p>Repite contraseña</p> <input type="password" name="password2" />';
-        $html .= '</div>';
-        $html .= '</div>'; //Se cierra line-1
+        $html = '<div class="grupo-control"><h1> Perfil </h1></div>';
 
         $html .= '<div class="line-2">';
         $html .= '<div class="grupo-control">';
-        $html .= '<p>Nombre</p> <input type="text" name="nombre" />';
+        $html .= '<p>Nombre de usuario</p>';
+        $html .= '<input type="text" name="username" placeholder="'.$datos->username().'" readonly/>';
         $html .= '</div>';
 
         $html .= '<div class="grupo-control">';
-        $html .= '<p>Apellidos</p> <input type="text" name="apellidos" />';
+        $html .= '<p>Contraseña</p>';
+        $html .= '<input type="text" name="password" placeholder="'.$datos->password().'" readonly/>';
         $html .= '</div>';
 
         $html .= '<div class="grupo-control">';
-        $html .= '<p>Email</p> <input type="text" name="email" />';
+        $html .= '<p>Cambia contraseña</p>';
+        $html .= '<input type="text" name="password2" />';
+        $html .= '</div>';
+
+        $html .= '<div class="grupo-control">';
+        $html .= '<button type="submit" name="registro"> Cambiar </button>';
         $html .= '</div>';
         $html .= '</div>'; //Se cierra line-2
 
-        $html .= '<div class="line-3">';
+        $html .= '<div class="line-2">';
         $html .= '<div class="grupo-control">';
-        $html .= '<p>Dirección de Envío</p> <input type="text" name="direccion" />';
+        $html .= '<p>Email</p>';
+        $html .= '<input type="text" name="email"  placeholder="'.$datos->email().'" readonly/>';
         $html .= '</div>';
 
         $html .= '<div class="grupo-control">';
-        $html .= '<button type="submit" name="registro">Registrar</button>';
+        $html .= '<p>Nombre</p>';
+        $html .= '<input type="text" name="nombre"  placeholder="'.$datos->name().'" readonly/>';
         $html .= '</div>';
-        $html .= '</div>'; //Se cierra la linea 3;
+
+        $html .= '<div class="grupo-control">';
+        $html .= '<p>Apellidos</p>';
+        $html .= '<input type="text" name="apellidos"  placeholder="'.$datos->lastname().'" readonly/>';
+        $html .= '</div>';
+
+        $html .= '<div class="grupo-control">';
+        $html .= '<p>Dirección de Envío</p>';
+        $html .= '<input type="text" name="direccion"  placeholder="'.$datos->address().'" readonly/>';
+        $html .= '</div>';
+        $html .= '</div>'; //Se cierra la linea 2;
+
+
+        $html .= '<div class="line-3">';
+        $html .= '<p> Aqui van los pedidos </p>';
+        $html .= '<p> Aqui van los pedidos </p>';
+        $html .= '<p> Aqui van los pedidos </p>';
+        $html .= '<p> Aqui van los pedidos </p>';
+        $html .= '<p> Aqui van los pedidos </p>';
+        $html .= '<p> Aqui van los pedidos </p>';
+        $html .= '<p> Aqui van los pedidos </p>';
+        $html .= '<p> Aqui van los pedidos </p>';
+        $html .= '<p> Aqui van los pedidos </p>';
+        $html .= '<p> Aqui van los pedidos </p>';
+        $html .= '<p> Aqui van los pedidos </p>';
+        $html .= '<p> Aqui van los pedidos </p>';
+        $html .= '<p> Aqui van los pedidos </p>';
+        $html .= '<p> Aqui van los pedidos </p>';
+        $html .= '<p> Aqui van los pedidos </p>';
+
+        $html .= '</div>';
+
+
 
         return $html;
     }
@@ -120,7 +137,7 @@ class formularioRegistro extends Form{
                 $erroresFormulario[] = "El cliente ya existe";
             } else {
                 $_SESSION['login'] = true;
-                $_SESSION['cliente'] = serialize($cliente);
+                $_SESSION['cliente'] = $cliente;
 
 
                 /*$carpeta = './mysql/img/'.$username;

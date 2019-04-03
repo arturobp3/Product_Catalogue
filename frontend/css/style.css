@@ -141,7 +141,7 @@ main #leftSideBar a:hover{
 			/* Content */
 /*--------------------------------------------*/
 
-main #content{
+main .content{
 	display: flex;
 	flex-direction: column;
   	margin: 1.10%;
@@ -151,11 +151,17 @@ main #content{
 	width: 100%;
 }
 
-main #content a{
+main .content{
+	color: white;
+}
+
+			/* Mostrar productos */
+/*--------------------------------------------*/
+main .content #productos{
 	text-decoration: none;
 }
 
-main #content .panelProducto{
+main .content #productos #panelProducto{
 	display: flex;
 	flex-direction: column;
 	border-bottom: 4px solid white;
@@ -165,36 +171,37 @@ main #content .panelProducto{
 	color: white;
 }
 
-main #content .panelProducto:hover{
-	transform: scale(1.05);
-	border-bottom: 4px solid #025E7A;
-	font-weight: bolder;	
+main .content #productos #panelProducto:hover{
+	transform: scale(1.05);	
 }
 
-main #content .panelProducto p{
+main .content #productos #panelProducto p{
 	display: flex;
 	justify-content: center;
 	font-size: 1.75em;
 }
 
-main #content .panelProducto #precio{
+main .content #productos #panelProducto #precio, main .content #productos #panelProducto .stock{
+	display: flex;
 	font-size: 2em;
+	flex-grow: 2;
 }
 
-main #content .panelProducto #parteInf{
+main .content #productos #panelProducto #parteInf{
 	display: flex;
 	flex-direction: row;
 	justify-content: left;
+	align-items: center;
+	padding-right: 10px;
 }
 
-main #content .panelProducto #parteInf img{
+main .content #productos #panelProducto #parteInf img{
+	display:flex;
+	flex-grow: 3;
 	max-height: 100%;
 	max-width: 15%;
 	border-radius: 10em;
 }
-
-
-
 
 
 	/* Form Inicial (Login y Registro) */
@@ -209,7 +216,7 @@ main #formInicial{
 	width: 100%;
 }
 
-main .grupo-control{
+main .grupo-control, main .grupo-control-2{
 	display:flex;
 	align-items: center;
 	flex-direction: column;
@@ -221,19 +228,19 @@ main #formInicial .grupo-control h1{
 	padding-bottom: 20px;
 }
 
-main #formInicial .grupo-control p{
+main #formInicial .grupo-control p, .grupo-control-2 p{
 	font-size: 1.15em;
 	padding-bottom: 20px;
 }
 
-main #formInicial .grupo-control input{
+main #formInicial .grupo-control input, .grupo-control-2 input{
 	height: 2em;
 	width: 15em;
 	border-radius: 15px;
 	text-align: center;
 }
 
-main #formInicial .grupo-control button{
+main #formInicial .grupo-control button, .grupo-control-2 button{
 	color: white;
 	border-radius: 15px;
 	background-color: #7A9D96;
@@ -242,7 +249,7 @@ main #formInicial .grupo-control button{
 	font-weight: bolder;
 }
 
-main #formInicial .grupo-control button:hover{
+main #formInicial .grupo-control button:hover, .grupo-control-2 button:hover{
 	background-color: #DCAE1D;
 }
 
@@ -254,6 +261,21 @@ main #formInicial #registro .line-1, .line-2{
 	justify-content: space-between;
 	align-items: center;
 }
+
+
+/*especiales para el perfil*/
+
+main #formInicial #perfil .line-3{
+	margin-top: 10%;
+	background-color: #7A9D96;
+	border: 2px solid black;
+	width: 100%;
+
+}
+
+
+
+
 
 
 				/* FOOTER */
