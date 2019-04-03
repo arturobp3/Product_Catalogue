@@ -13,13 +13,18 @@ require_once("../backend/producto.php");
 		$result = unserialize($_SESSION["queryProductos"]);
 
 		foreach ($result as $key => $value) {
-			echo 	"<div class='panelProducto'>
-
-						<a href='#'>".$value->name()."</a>
-					</div>";
+			echo 	"<a href='#'>
+						<div class='panelProducto'>
+							<p>".$value->name()."</p>
+							<div id='parteInf'>
+								<img src='../backend/mysql/products/".$value->id().".jpg'>
+								<p id='precio'>".$value->price()."€</p>
+							</div>
+						</div>
+					</a>";
 		}
 
-		//<img id='producto' src='.$value.'>*/
+		
 
 		unset($_SESSION["queryProductos"]);
 	}

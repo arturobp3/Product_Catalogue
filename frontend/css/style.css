@@ -134,9 +134,8 @@ main #leftSideBar a{
 
 main #leftSideBar a:hover{
 	background-color: #025E7A;
-	width: 75%;
 	border: 3px groove #00303F;
-	padding-left: 20%;
+	transform: scale(1.15);
 }
 
 			/* Content */
@@ -152,11 +151,49 @@ main #content{
 	width: 100%;
 }
 
-main #content .panelProducto{
-	border-bottom: 3px solid #00303F;
-	height: 30vh;
-	margin: 1%;
+main #content a{
+	text-decoration: none;
 }
+
+main #content .panelProducto{
+	display: flex;
+	flex-direction: column;
+	border-bottom: 4px solid white;
+	height: 30vh;
+	margin: 1.5%;
+	border-radius: 10em;
+	color: white;
+}
+
+main #content .panelProducto:hover{
+	transform: scale(1.05);
+	border-bottom: 4px solid #025E7A;
+	font-weight: bolder;	
+}
+
+main #content .panelProducto p{
+	display: flex;
+	justify-content: center;
+	font-size: 1.75em;
+}
+
+main #content .panelProducto #precio{
+	font-size: 2em;
+}
+
+main #content .panelProducto #parteInf{
+	display: flex;
+	flex-direction: row;
+	justify-content: left;
+}
+
+main #content .panelProducto #parteInf img{
+	max-height: 100%;
+	max-width: 15%;
+	border-radius: 10em;
+}
+
+
 
 
 
