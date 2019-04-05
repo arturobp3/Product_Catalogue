@@ -67,11 +67,11 @@ class Producto {
                                         $fila['marca'], $fila['precioEuros']);
                     $producto->id = $fila['id'];
 
-                    $resultado[] = $producto;
+                    $result[] = $producto;
                 }
             }
             $rs->free();
-            return $resultado;
+            return $result;
         } else {
             echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
             exit();
@@ -79,6 +79,35 @@ class Producto {
 
         return $result;
     }
+
+    public static function buscarPorId($id){
+        $app = Aplicacion::getInstance();
+        $conn = $app->conexionBD();
+
+        $query = sprintf("SELECT * FROM producto U WHERE U.id = '%s'", $conn->real_escape_string($id));
+        $rs = $conn->query($query);
+        $result = false;
+
+        if ($rs) {
+            if ( $rs->num_rows > 0) {
+
+                 $fila = $rs->fetch_assoc();
+                $producto = new Producto($fila['nombre'],  $fila['cantidad'], $fila['categoria'],
+                                    $fila['marca'], $fila['precioEuros']);
+                $producto->id = $fila['id'];
+
+                $result = $producto;
+            }
+            $rs->free();
+            
+        } else {
+            echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+
+        return $result;
+    }
+
 
     
     

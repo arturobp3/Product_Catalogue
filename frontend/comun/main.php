@@ -4,7 +4,8 @@
 			if (isset($_SESSION["login"]) && ($_SESSION["login"]===true)){
 			
 				require_once('comun/sideBarIzq.php');
-				require_once('comun/contentMain.php');
+
+				echo "<h1 class='mensaje'> Elige una categoría </h1>";
 			}
 			else{
 				echo '<div id="panelVacio">
