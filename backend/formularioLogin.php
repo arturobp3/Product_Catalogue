@@ -52,7 +52,7 @@ class formularioLogin extends Form{
 
 
             $cliente = cliente::login($username, $password);
-			
+            
             if (!$cliente) {
                 $erroresFormulario[] = "El cliente o el password no coinciden";
             }

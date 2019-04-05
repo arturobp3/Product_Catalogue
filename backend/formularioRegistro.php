@@ -117,7 +117,7 @@ class formularioRegistro extends Form{
 
             
             if (! $cliente ) {
-                $erroresFormulario[] = "El cliente ya existe";
+                $erroresFormulario[] = "El usuario ya existe";
             } else {
                 $_SESSION['login'] = true;
                 $_SESSION['cliente'] = serialize($cliente);

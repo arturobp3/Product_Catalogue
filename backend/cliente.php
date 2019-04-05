@@ -7,7 +7,6 @@ class Cliente {
     private $id;
     private $username;
     private $password;
-    private $passwordSinHash;
     private $email;
     private $name;
     private $lastname;
@@ -17,8 +16,7 @@ class Cliente {
     private function __construct($username, $password, $email, $name, $lastname, $address){
         $this->username= $username;
         $this->email = $email;
-        $this->password = password_hash($password, PASSWORD_DEFAULT);
-        $this->passwordSinHash = $password;
+        $this->password = $password;
         $this->name = $name;
         $this->lastname = $lastname;
         $this->address = $address;
@@ -50,14 +48,9 @@ class Cliente {
         return $this->address;
     }
 
-    public function password(){
-        return $this->passwordSinHash;
-    }
-
 
     //Revisar esta función
     public function cambiaPassword($nuevoPassword){
-        $this->passwordSinHash = $nuevoPassword;
         $this->password = password_hash($nuevoPassword);
     }
 
@@ -100,14 +93,15 @@ class Cliente {
      devuelve false.*/
     public static function login($username, $password){
         $user = self::buscacliente($username);
+
         if ($user && $user->compruebaPassword($password)) {
             $user->cambiaPassword($password);
-
             $_SESSION['login'] = true;
             $_SESSION['cliente'] = serialize($user);
 
             return $user;
         }
+    
         return false;
     }
     
@@ -118,8 +112,8 @@ class Cliente {
         if ($user) {
             return false;
         }
-        $user = new cliente($username, $password,
-                            $email, $name, $lastname, $address);
+        $user = new cliente($username, password_hash($password, PASSWORD_DEFAULT), $email, 
+                            $name, $lastname, $address);
 
 
         return self::guarda($user);

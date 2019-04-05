@@ -25,13 +25,13 @@ class formularioPerfil extends Form{
 
         $html .= '<div class="line-2">';
         $html .= '<div class="grupo-control">';
-        $html .= '<p>Nombre de usuario</p>';
-        $html .= '<input type="text" name="username" placeholder="'.$datos->username().'" readonly/>';
+        $html .= '<p>Email</p>';
+        $html .= '<input type="text" name="email"  placeholder="'.$datos->email().'" readonly/>';
         $html .= '</div>';
 
         $html .= '<div class="grupo-control">';
-        $html .= '<p>Contraseña</p>';
-        $html .= '<input type="text" name="password" placeholder="'.$datos->password().'" readonly/>';
+        $html .= '<p>Nombre de usuario</p>';
+        $html .= '<input type="text" name="username" placeholder="'.$datos->username().'" readonly/>';
         $html .= '</div>';
 
         $html .= '<div class="grupo-control">';
@@ -45,11 +45,6 @@ class formularioPerfil extends Form{
         $html .= '</div>'; //Se cierra line-2
 
         $html .= '<div class="line-2">';
-        $html .= '<div class="grupo-control">';
-        $html .= '<p>Email</p>';
-        $html .= '<input type="text" name="email"  placeholder="'.$datos->email().'" readonly/>';
-        $html .= '</div>';
-
         $html .= '<div class="grupo-control">';
         $html .= '<p>Nombre</p>';
         $html .= '<input type="text" name="nombre"  placeholder="'.$datos->name().'" readonly/>';
@@ -85,8 +80,6 @@ class formularioPerfil extends Form{
         $html .= '<p> Aqui van los pedidos </p>';
 
         $html .= '</div>';
-
-
 
         return $html;
     }
@@ -134,10 +127,10 @@ class formularioPerfil extends Form{
 
             
             if (! $cliente ) {
-                $erroresFormulario[] = "El cliente ya existe";
+                $erroresFormulario[] = "El usuario ya existe";
             } else {
                 $_SESSION['login'] = true;
-                $_SESSION['cliente'] = $cliente;
+                $_SESSION['cliente'] = serialize($cliente);
 
 
                 /*$carpeta = './mysql/img/'.$username;
