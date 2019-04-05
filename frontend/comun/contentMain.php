@@ -14,8 +14,6 @@ require_once("../backend/producto.php");
 
 		$result = unserialize($_SESSION["queryProductos"]);
 
-
-
 		foreach ($result as $key => $value) {
 
 			if($value->quantity() > 0) $stock = "En stock";

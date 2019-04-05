@@ -40,6 +40,10 @@ class Cliente {
         return $this->name;
     }
 
+    public function password(){
+        return $this->password;
+    }
+
     public function lastname(){
         return $this->lastname;
     }
@@ -51,7 +55,7 @@ class Cliente {
 
     //Revisar esta función
     public function cambiaPassword($nuevoPassword){
-        $this->password = password_hash($nuevoPassword);
+        $this->password = password_hash($nuevoPassword, PASSWORD_DEFAULT);
     }
 
 
@@ -95,7 +99,7 @@ class Cliente {
         $user = self::buscacliente($username);
 
         if ($user && $user->compruebaPassword($password)) {
-            $user->cambiaPassword($password);
+        
             $_SESSION['login'] = true;
             $_SESSION['cliente'] = serialize($user);
 
@@ -121,7 +125,7 @@ class Cliente {
     
     
     public static function guarda($cliente){
-        if ($cliente->id !== null) {
+        if ($cliente->id() !== null) {
             return self::actualiza($cliente);
         }
         return self::inserta($cliente);
@@ -151,26 +155,27 @@ class Cliente {
     private static function actualiza($cliente){
         $app = Aplicacion::getInstance();
         $conn = $app->conexionBD();
-        $query=sprintf("UPDATE cliente U SET user = '%s', pass='%s', email='%s', nombre='%s', apellidos='%s', direccion='%s'
-                        WHERE U.id=%i"
-            , $conn->real_escape_string($cliente->username)
-            , $conn->real_escape_string($cliente->password)
-            , $conn->real_escape_string($cliente->email)
-            , $conn->real_escape_string($cliente->name)
-            , $conn->real_escape_string($cliente->lastname)
-            , $conn->real_escape_string($cliente->address)
-            , $cliente->id);
+
+
+        $query=sprintf("UPDATE cliente U 
+                        SET U.pass='%s'
+                        WHERE U.id='%s' "
+            , $conn->real_escape_string($cliente->password())
+            , $cliente->id());
+
         if ( $conn->query($query) ) {
             if ( $conn->affected_rows != 1) {
-                echo "No se ha podido actualizar el cliente: " . $cliente->id;
+    
+                echo "No se ha podido actualizar la contraseña";
                 exit();
+            }
+            else{
+                return $cliente;
             }
         } else {
             echo "Error al actualizar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
             exit();
         }
-        
-        return $cliente;
     }
     
 }

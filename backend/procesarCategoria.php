@@ -5,9 +5,7 @@
 
 
 	switch($_GET["categoria"]){
-		case "moda": 
-			$result = Producto::buscarPorCategoria("Moda"); 
-			break;
+		
 		case "informatica": 
 			$result = Producto::buscarPorCategoria("Informática"); 
 			break;
