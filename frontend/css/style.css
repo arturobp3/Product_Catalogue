@@ -251,7 +251,7 @@ main #formInicial .grupo-control input, .grupo-control-2 input{
 	text-align: center;
 }
 
-main #formInicial .grupo-control button, .grupo-control-2 button{
+button{
 	color: white;
 	border-radius: 15px;
 	background-color: #7A9D96;
@@ -259,8 +259,7 @@ main #formInicial .grupo-control button, .grupo-control-2 button{
 	padding: 15px;
 	font-weight: bolder;
 }
-
-main #formInicial .grupo-control button:hover, .grupo-control-2 button:hover{
+button:hover{
 	background-color: #DCAE1D;
 }
 
@@ -280,6 +279,68 @@ main #formInicial #perfil .line-3{
 	margin-top: 10%;
 	background-color: #7A9D96;
 	width: 100%;
+}
+
+
+
+				/* PRODUCTO */
+/*---------------------------------------------*/
+
+.panel1, .panel2, .panel3{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.panel1{
+	padding-left: 4%;
+	padding-right: 4%;
+	height: 80vh;
+}
+.panel1 img{
+	width: 300px;
+	height: 300px;
+	border-radius: 15%;
+	border: 5px solid #00303F;
+	padding: 8px;
+	background-color:#025E7A;
+}
+
+.panel1-2{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 70%;
+	padding: 2%;
+}
+
+.panel1-2 p{
+	padding: 2%;
+	font-family: monospace;
+	font-size: 1.1em;
+	line-height: 1.5;
+	text-align: justify;
+}
+
+.panel2{
+	justify-content: space-around;
+	width: 70%;
+	padding-left: 25%;
+}
+
+.panel2 h2{
+	font-size: 2.5em;
+}
+
+.panel3{
+	margin: 2%;
+	margin-top: 30px;
+	height: 50vh;
+	border-radius: 5%;
+	border: 5px solid #00303F;
+	padding: 8px;
+	background-color:#025E7A;
 }
 
 

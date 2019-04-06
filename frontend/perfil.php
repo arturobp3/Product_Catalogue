@@ -19,15 +19,12 @@
 		<?php require("comun/cabecera.php"); ?>
 
 		<main>
-
-			<div class="content">
 				<div id="formInicial">
 					<?php
 						$formulario = new formularioPerfil("perfil");
 						$formulario->gestiona();
 					?>
 				</div>
-			</div>
 
 		</main>
 			

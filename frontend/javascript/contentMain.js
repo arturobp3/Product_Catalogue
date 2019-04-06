@@ -15,7 +15,4 @@ function cambiaStock(){
             imgs[i].style.border = "6px solid red";
         }
     }
-
-
-
 }
