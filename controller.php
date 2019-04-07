@@ -17,7 +17,15 @@ class Controller{
     }
 
 
-    
+    public static function productosEnLista(){
+
+        if( ! isset($_SESSION['listaProductos']) || sizeof($_SESSION['listaProductos']) === 0){
+            return false;
+        }
+        else{
+            return $_SESSION['listaProductos'];
+        }
+    }
 
 
 

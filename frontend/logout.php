@@ -6,6 +6,7 @@ require_once("../backend/config.php");
 //Doble seguridad: unset + destroy
 unset($_SESSION["login"]);
 unset($_SESSION["cliente"]);
+unset($_SESSION['listaProductos']);
 
 
 session_destroy();

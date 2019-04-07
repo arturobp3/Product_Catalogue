@@ -10,9 +10,11 @@
 					</form>
 				</div>' . 
 				'<div id="enlaces">
+					<a href="listaCompra.php">'."\u{1F4C6}".'</a>
 					<a href="perfil.php">Perfil</a>
 					<a href="logout.php">Salir</a>
 				</div>';
+
 		}
 		else{
 			echo '<div id="enlaces">
