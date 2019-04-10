@@ -91,8 +91,8 @@ el pedido.*/
 
 
 CREATE TABLE Tiene (
-	id_producto int(32) NOT NULL, 
 	id_pedido int(32) NOT NULL,
+	id_producto int(32) NOT NULL,
 
 	PRIMARY KEY (id_producto, id_pedido),
 	CONSTRAINT tiene_fk_1 FOREIGN KEY (id_producto) REFERENCES Producto (id) ON DELETE CASCADE,

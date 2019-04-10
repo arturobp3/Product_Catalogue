@@ -1,8 +1,8 @@
 <?php
 
 require_once('form.php');
-require_once('cliente.php');
 require_once('../controller.php');
+require_once('pedido.php');
 
 class formularioListaCompra extends Form{
 
@@ -54,32 +54,27 @@ class formularioListaCompra extends Form{
 
     protected function procesaFormulario($datos){
 
-
-        
         $erroresFormulario = array();
 
         $productos = $_SESSION['listaProductos'];
-       
 
-        /*
-        $password = isset($_POST['password2']) ? $_POST['password2'] : null;
-        if ( empty($password) || mb_strlen($password) < 5 ) {
-            $erroresFormulario[] = "El password tiene que tener una longitud de al menos 5 caracteres.";
+        //Obtenemos los productos en una lista de objetos y se los pasamos a realizar pedido
+        $listProduct;
+        foreach($productos as $key => $value){
+            $listProduct[] = unserialize($value);
+        }
+
+        $pedido = Pedido::realizarPedido($listProduct);
+
+        if($pedido === false){
+            $erroresFormulario[] = "Ha habido algun problema al realizar el pedido";
         }
         else{
-            //Obtenemos los datos del cliente de la sesion
-            $datos = unserialize($_SESSION['cliente']);
-
-            //Cambiamos su contraseña
-            $datos->cambiaPassword($_POST['password2']);
-
-            //Guardamos los cambios
-            Cliente::guarda($datos);
-
-            return "index.php";
-        }*/ 
-
-        //PROCESAR ACEPTAR PEDIDO
+            $erroresFormulario[] = "Pedido realizado correctamente. Por favor compruebe en su perfil la 
+                                    información del pedido.";
+        }
+        
+        unset($_SESSION['listaProductos']);
 
         return $erroresFormulario;
 
