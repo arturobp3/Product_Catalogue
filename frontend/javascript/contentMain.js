@@ -8,11 +8,13 @@ function cambiaStock(){
         if(docs[i].innerHTML == "En stock"){
             docs[i].style.color = "green";
             imgs[i].style.border = "6px solid green";
+            docs[i].innerHTML = "En stock";
            
         }
         else{
             docs[i].style.color = "red";
             imgs[i].style.border = "6px solid red";
+            docs[i].innerHTML = "Agotado";
         }
     }
 }

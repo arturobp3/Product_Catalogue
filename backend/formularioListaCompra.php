@@ -22,8 +22,8 @@ class formularioListaCompra extends Form{
 
         //Obtenemos gracias al controlador los productos deseados
 
-		$result = Controller::productosEnLista();
-
+        $result = Controller::productosEnLista();
+        
 		if($result === false){
 			echo "<h1 class='grupo-control'> No hay productos en tu lista </h1>";
 			exit();
@@ -33,8 +33,9 @@ class formularioListaCompra extends Form{
          
             $html .= '<div class="grupo-control">';
             foreach ($result as $value) {
-                $producto = Controller::prodPorId($value);
+                $producto = unserialize($value);
                 $html .= '<div class="line-4">';
+                $html .= '<h3>'.$producto->id().'</h3>';
                 $html .= '<h3>'.$producto->name().'</h3>';
                 $html .= '<h3>'.$producto->price().' €</h3>';
                 $html .= '<a href="../backend/borrarLista.php?id='.$producto->id().'">Borrar</a>';
@@ -54,9 +55,13 @@ class formularioListaCompra extends Form{
     protected function procesaFormulario($datos){
 
 
+        
         $erroresFormulario = array();
 
-        
+        $productos = $_SESSION['listaProductos'];
+       
+
+        /*
         $password = isset($_POST['password2']) ? $_POST['password2'] : null;
         if ( empty($password) || mb_strlen($password) < 5 ) {
             $erroresFormulario[] = "El password tiene que tener una longitud de al menos 5 caracteres.";
@@ -72,7 +77,9 @@ class formularioListaCompra extends Form{
             Cliente::guarda($datos);
 
             return "index.php";
-        }
+        }*/ 
+
+        //PROCESAR ACEPTAR PEDIDO
 
         return $erroresFormulario;
 

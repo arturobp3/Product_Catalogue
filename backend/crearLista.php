@@ -1,13 +1,16 @@
 <?php
 
 require_once('./config.php');
+require_once('../controller.php');
 
 
-$producto = $_GET['id'];
+//Obtenemos el producto por su id
+$producto = Controller::prodPorId($_GET['id']);
 
-$_SESSION['listaProductos'][] = $producto;
+//Guardamos el producto con la clave de su id
+$_SESSION['listaProductos'][$_GET['id']] = serialize($producto);
 
 
-$siguiente = "../frontend/producto.php?id=".$producto;
+$siguiente = "../frontend/producto.php?id=".$_GET['id'];
 
 header('Location: '.$siguiente);

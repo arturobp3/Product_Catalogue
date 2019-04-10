@@ -17,6 +17,8 @@ class Controller{
     }
 
 
+    //Devuelve la lista de productos con sus productos serializados. Hay que utilizar unserialize(producto)
+    //Para obtener el objeto
     public static function productosEnLista(){
 
         if( ! isset($_SESSION['listaProductos']) || sizeof($_SESSION['listaProductos']) === 0){

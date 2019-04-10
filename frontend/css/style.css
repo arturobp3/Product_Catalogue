@@ -75,7 +75,7 @@ header #formCabecera input{
 	height: 2.5em;
 	width: 35em;
 	border-radius: 15px;
-	padding-left: 15px;
+	padding: 0px 20px;
 }
 
 				/*  Enlaces */
@@ -201,14 +201,12 @@ main .content #productos #panelProducto #parteInf{
 	flex-direction: row;
 	justify-content: left;
 	align-items: center;
-	height: inherit;
 	padding-right: 10px;
 }
 
 main .content #productos #panelProducto #parteInf img{
 	display:flex;
 	flex-grow: 3;
-	height: inherit;
 	max-width: 15%;
 	border-radius: 10em;
 }
@@ -300,8 +298,8 @@ main #formInicial #perfil .line-3{
 	height: 80vh;
 }
 .panel1 img{
-	width: 300px;
-	height: 300px;
+	width: auto;
+	height: 400px;
 	border-radius: 15%;
 	border: 5px solid #00303F;
 	padding: 8px;
