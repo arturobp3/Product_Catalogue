@@ -2,6 +2,7 @@
 
 require_once('form.php');
 require_once('../controller.php');
+require_once('cliente.php');
 require_once('pedido.php');
 
 class formularioListaCompra extends Form{
@@ -59,19 +60,28 @@ class formularioListaCompra extends Form{
         $productos = $_SESSION['listaProductos'];
 
         //Obtenemos los productos en una lista de objetos y se los pasamos a realizar pedido
-        $listProduct;
+        $listProduct = null;
+        $price = 0;
         foreach($productos as $key => $value){
-            $listProduct[] = unserialize($value);
+            $p = unserialize($value);
+            $price += $p->price();
+            $listProduct[] = $p;
         }
 
-        $pedido = Pedido::realizarPedido($listProduct);
+        $client = unserialize($_SESSION['cliente']);
+        $fecha = date('Y-m-d H:i:s');
+
+        $pedido = new Pedido($client->id(), $fecha, $listProduct, $price);
+
+        $estado = Pedido::realizarPedido($pedido);
 
         if($pedido === false){
             $erroresFormulario[] = "Ha habido algun problema al realizar el pedido";
         }
         else{
-            $erroresFormulario[] = "Pedido realizado correctamente. Por favor compruebe en su perfil la 
-                                    información del pedido.";
+
+            //Generar factura XML
+
         }
         
         unset($_SESSION['listaProductos']);

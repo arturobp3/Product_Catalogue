@@ -64,7 +64,8 @@ class formularioPerfil extends Form{
 
         $html .= '<div class="line-3">';
         $html .= '<div class="grupo-control">';
-        $html .= '<p> Aqui van los pedidos </p>';
+        $html .= '<p> Ver factura del pedido 1: Al dar click hará unas consultas en un xml generado previamente
+                    y mostrará la información </p>';
         $html .= '<p> Aqui van los pedidos </p>';
         $html .= '<p> Aqui van los pedidos </p>';
         $html .= '<p> Aqui van los pedidos </p>';
