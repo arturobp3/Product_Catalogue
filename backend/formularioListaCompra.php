@@ -4,6 +4,7 @@ require_once('form.php');
 require_once('cliente.php');
 require_once('pedido.php');
 require_once("producto.php");
+require_once("facturaXML.php");
 
 class formularioListaCompra extends Form{
 
@@ -88,9 +89,9 @@ class formularioListaCompra extends Form{
         else{
             $productList = Producto::decrementQuantity($listaProductos);
 
-            
-            //GENERAR FACTURAS XML
 
+            //Creamos la factura del pedido realizado por el cliente
+            FacturaXML::crearFactura($client, $pedido);
         }
         
         unset($_SESSION['listaProductos']);

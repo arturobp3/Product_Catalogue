@@ -1,29 +1,56 @@
 <?php
 
-class Factura{
+class FacturaXML{
 
+    public static function crearFactura($cliente, $pedido){
 
-        $doc = new DOMDocument();
-        $doc->load('http://www.example.com/some.xml');
-        $xpd = new DOMXPath($doc);
+        //Elemento principal: <Factura>
+        $xml = new SimpleXMLElement('<?xml version="1.0" encoding="iso-8859-1" ?><Factura/>');
 
+        $xml->addChild('id_Pedido', $pedido->id());
+        $xml->addChild('Fecha', $pedido->date());
+        $xml->addChild('Empresa', 'Product Catalogue');
+        $xml->addChild('ModoCompra', 'Online');
+        $c = $xml->addChild('Cliente');
+        $c->addChild('id', $cliente->id());
+        $c->addChild('Usuario', $cliente->username());
+        $c->addChild('Nombre', $cliente->name());
+        $c->addChild('Apellidos', $cliente->lastname());
+        $c->addChild('DireccionEnvio', $cliente->address());
 
-        $result = $xpd->query('//a/b');
-        foreach($result as $node){
-            echo $node->nodeName.'<br />';
+        $productList = $xml->addChild('ListaProductos');
+
+        //loop through the data, and add each record to the xml object
+        foreach($pedido->productList() as $p){
+            $product = $productList->addChild('Producto');
+            $product->addChild('id', $p->id());
+            $product->addChild('Proveedor', $p->brand());
+            $product->addChild('Nombre', $p->name());
+            $product->addChild('Precio', $p->price());
         }
 
+        $xml->addChild('PrecioTotal', $pedido->price());
+
+        //Creamos un documento DOM para poder indentar el codigo XML
+        $dom = new DOMDocument("1.0", "utf-8");
+        
+        //Con estas sentencias lo indentamos
+        $dom->preserveWhiteSpace = false;
+        $dom->formatOutput = true;
+
+        //Cargamos el XML creado previamente
+        $dom->loadXML($xml->asXML());
 
 
+        $ruta = "../backend/mysql/facturas/".$cliente->username()."/pedido".$pedido->id().".xml";
 
-        $dom = new DOMDocument('1.0', 'utf-8');
+        $dom->save($ruta);
 
-        $element = $dom->createElement('test', 'This is the root element!');
+        //$xml->saveXML($ruta); Para guardar sin formato
+    }
 
-        // Insertamos el nuevo elemento como raíz (hijo del documento)
-        $strings_xml = $dom->saveXML(); 
 
-        var_dump($strings_xml);
-        exit();
-        //$xml->save('mysql/"prueba.xml'); 
+    //$xml = simplexml_load_file($ruta);
+
+
 }

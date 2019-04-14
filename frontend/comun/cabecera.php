@@ -1,6 +1,6 @@
 <header>
 
-	<a href="index.php" id="logo"><p>PRODUCT CATALOG</p></a>
+	<a href="index.php" id="logo"><p>PRODUCT CATALOGUE</p></a>
 
 	<?php
 		if (isset($_SESSION["login"]) && ($_SESSION["login"]===true)){
