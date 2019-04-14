@@ -20,7 +20,6 @@ class FacturaXML{
 
         $productList = $xml->addChild('ListaProductos');
 
-        //loop through the data, and add each record to the xml object
         foreach($pedido->productList() as $p){
             $product = $productList->addChild('Producto');
             $product->addChild('id', $p->id());
@@ -31,6 +30,7 @@ class FacturaXML{
 
         $xml->addChild('PrecioTotal', $pedido->price());
 
+        
         //Creamos un documento DOM para poder indentar el codigo XML
         $dom = new DOMDocument("1.0", "utf-8");
         

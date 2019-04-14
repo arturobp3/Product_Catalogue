@@ -63,7 +63,7 @@
 						</div>
 						<div class='panel2'>
 							<h2> Precio: ".$result->price()." € </h2>
-							<form action='../backend/crearLista.php?id=".$result->id()."' method='post' id='form'>
+							<form action='../backend/utilsCarrito/crearListaCompra.php?id=".$result->id()."' method='post' id='form'>
 								<button type='submit' onclick='button()' name='comprar' id='comprar'>Comprar</button>
 							</form>
 

@@ -106,6 +106,29 @@ class Pedido {
         return $pedido;
     }
 
+    public static function cancelarPedido($id){
+        
+        $app = Aplicacion::getInstance();
+        $conn = $app->conexionBD();
+
+        //No se puede producir inyeccion SQL puesto que esta función se la llama en un archivo donde 
+        //se recibe un id por GET de manera estática y seguidamente redirige a otra página.
+        $query=sprintf("DELETE FROM pedido WHERE id=$id");
+
+        if ( $conn->query($query) ) {
+            if (! $conn->affected_rows == 1) {
+                echo "Error al borrar de la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+                exit();
+            }
+
+        } else {
+            echo "Error al borrar de la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+
+        return $pedido;
+    }
+
 
     //Funcion principal para poder realizar un pedido
     public static function realizarPedido($pedido){
@@ -113,14 +136,19 @@ class Pedido {
         $app = Aplicacion::getInstance();
         $conn = $app->conexionBD();
 
+        //Inserta en la primera tabla
         $pedido = self::insertaPedido($pedido);
 
         if($pedido !== false){
                 
+            //Inserta en la segunda tabla
             $pedido = self::insertaTiene($pedido);
             
             if($pedido !== false){
+                //Inserta en la tercera
                 $pedido = self::insertaRealiza($pedido);
+
+                //Se acaba la ejecución
             }
             else{
                 return false;
@@ -131,7 +159,5 @@ class Pedido {
         else{
             return false;
         }
-
-
     } 
 }

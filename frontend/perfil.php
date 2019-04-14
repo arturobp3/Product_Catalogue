@@ -15,6 +15,7 @@
 </head>
 <body>
 
+
 	<div class="contenedor">
 
 		<?php require("comun/cabecera.php"); ?>

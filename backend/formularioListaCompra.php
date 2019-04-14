@@ -4,7 +4,7 @@ require_once('form.php');
 require_once('cliente.php');
 require_once('pedido.php');
 require_once("producto.php");
-require_once("facturaXML.php");
+require_once("utilsPedidos/facturaXML.php");
 
 class formularioListaCompra extends Form{
 
@@ -44,7 +44,7 @@ class formularioListaCompra extends Form{
                 $html .= '<h3>'.$producto->id().'</h3>';
                 $html .= '<h3>'.$producto->name().'</h3>';
                 $html .= '<h3>'.$producto->price().' €</h3>';
-                $html .= '<a href="../backend/borrarLista.php?id='.$producto->id().'">Borrar</a>';
+                $html .= '<a href="../backend/utilsCarrito/borrarListaCompra.php?id='.$producto->id().'">Borrar</a>';
                 $html .= '</div>';
 
             }

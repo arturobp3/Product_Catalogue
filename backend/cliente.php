@@ -177,4 +177,43 @@ class Cliente {
             exit();
         }
     }
+
+    public function getPedidos(){
+
+        $app = Aplicacion::getInstance();
+        $conn = $app->conexionBD();
+
+        $query = sprintf("SELECT * FROM pedido");
+
+        $rs = $conn->query($query);
+        $result = false;
+
+        if ($rs) {
+
+            if ( $rs->num_rows > 0) {
+                for($i = 0; $i < $rs->num_rows; $i++){
+                    $fila = $rs->fetch_assoc();
+
+                    $pedidos[] = array(
+                        'id' => $fila['id'],
+                        'fecha' => $fila['fecha'],
+                    );
+                }
+
+                $rs->free();
+                return $pedidos;
+            }
+
+        } else {
+            echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+
+        return $result;
+    }
+
+    public static function eliminarPedido(){
+
+        echo "Hola";
+    }
 }

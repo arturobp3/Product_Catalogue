@@ -225,6 +225,10 @@ main #formInicial{
 	width: 100%;
 }
 
+main .line-1, main .line-2{
+	width: 105%;
+}
+
 main .grupo-control, main .grupo-control-2{
 	display:flex;
 	align-items: center;
@@ -259,6 +263,11 @@ button{
 	padding: 15px;
 	font-weight: bolder;
 }
+
+/*.grupo-control button{
+	margin-top: 35%;
+}*/
+
 button:hover{
 	background-color: #DCAE1D;
 }
@@ -277,7 +286,10 @@ main #formInicial #registro .line-1, .line-2{
 
 main #formInicial #perfil .line-3{
 	margin-top: 10%;
+	padding: 2%;
 	background-color: #7A9D96;
+	border-radius: 15px;
+	border: 3px solid #00303F;
 	width: 100%;
 }
 

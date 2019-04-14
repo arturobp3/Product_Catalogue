@@ -91,7 +91,7 @@ class Producto {
         if ($rs) {
             if ( $rs->num_rows > 0) {
 
-                 $fila = $rs->fetch_assoc();
+                $fila = $rs->fetch_assoc();
                 $producto = new Producto($fila['nombre'],  $fila['cantidad'], $fila['categoria'],
                                     $fila['marca'], $fila['precioEuros']);
                 $producto->id = $fila['id'];
@@ -109,12 +109,12 @@ class Producto {
     }
 
 
-    private static function actualiza($producto){
+    private static function actualiza($producto, $cantidad){
         $app = Aplicacion::getInstance();
         $conn = $app->conexionBD();
 
-        $query=sprintf("UPDATE producto U SET cantidad = cantidad - 1 WHERE U.id='%s'"
-            , $producto->id);
+        $query=sprintf("UPDATE producto U SET cantidad = cantidad + $cantidad WHERE U.id='%s'"
+            , $producto);
 
         if ( $conn->query($query) ) {
 
@@ -138,11 +138,39 @@ class Producto {
             if($p->quantity > 0){
 
                 $p->quantity = $p->quantity - 1;
-                self::actualiza($p);
+                self::actualiza($p->id, -1);
             }
         }
 
         return $productList;
     }
+
+    public static function incrementQuantity($id_pedido){
+        $app = Aplicacion::getInstance();
+        $conn = $app->conexionBD();
+
+        $query = sprintf("SELECT * FROM tiene U WHERE U.id_pedido = '%s'", $conn->real_escape_string($id_pedido));
+        $rs = $conn->query($query);
+        $result = false;
+
+        if ($rs) {
+            if ( $rs->num_rows > 0) {
+
+                for($i = 0; $i < $rs->num_rows; $i++){
+                    
+                    $fila = $rs->fetch_assoc();
+
+                    self::actualiza($fila['id_producto'], 1);
+                }
+            }
+
+            $rs->free();
+            
+        } else {
+            echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+    }
+
     
 }
