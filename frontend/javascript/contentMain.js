@@ -1,3 +1,5 @@
+//Cambia el Stock de la lista de productos en función de si hay cantidad suficiente
+//del producto o no
 function cambiaStock(){
 
     var docs = document.getElementsByClassName("stock");

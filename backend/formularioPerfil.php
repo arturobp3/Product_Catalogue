@@ -25,6 +25,23 @@ class formularioPerfil extends Form{
 
         $html .= '<div class="line-2">';
         $html .= '<div class="grupo-control">';
+        $html .= '<p>Nombre</p>';
+        $html .= '<input type="text" name="nombre"  placeholder="'.$datos->name().'" readonly/>';
+        $html .= '</div>';
+
+        $html .= '<div class="grupo-control">';
+        $html .= '<p>Apellidos</p>';
+        $html .= '<input type="text" name="apellidos"  placeholder="'.$datos->lastname().'" readonly/>';
+        $html .= '</div>';
+
+        $html .= '<div class="grupo-control">';
+        $html .= '<p>Dirección de Envío</p>';
+        $html .= '<input type="text" name="direccion"  placeholder="'.$datos->address().'" readonly/>';
+        $html .= '</div>';
+        $html .= '</div>'; //Se cierra la linea 2;
+
+        $html .= '<div class="line-2">';
+        $html .= '<div class="grupo-control">';
         $html .= '<p>Email</p>';
         $html .= '<input type="text" name="email"  placeholder="'.$datos->email().'" readonly/>';
         $html .= '</div>';
@@ -44,27 +61,10 @@ class formularioPerfil extends Form{
         $html .= '</div>';
         $html .= '</div>'; //Se cierra line-2
 
-        $html .= '<div class="line-2">';
-        $html .= '<div class="grupo-control">';
-        $html .= '<p>Nombre</p>';
-        $html .= '<input type="text" name="nombre"  placeholder="'.$datos->name().'" readonly/>';
-        $html .= '</div>';
-
-        $html .= '<div class="grupo-control">';
-        $html .= '<p>Apellidos</p>';
-        $html .= '<input type="text" name="apellidos"  placeholder="'.$datos->lastname().'" readonly/>';
-        $html .= '</div>';
-
-        $html .= '<div class="grupo-control">';
-        $html .= '<p>Dirección de Envío</p>';
-        $html .= '<input type="text" name="direccion"  placeholder="'.$datos->address().'" readonly/>';
-        $html .= '</div>';
-        $html .= '</div>'; //Se cierra la linea 2;
-
 
         $html .= '<div class="line-3">';
         $html .= '<div class="grupo-control">';
-        $html .= '<p> Ver factura del pedido 1: Al dar click hará unas consultas en un xml generado previamente
+        $html .= '<p> (Rechazar Pedido) (Ver factura) del pedido 1: Al dar click hará unas consultas en un xml generado previamente
                     y mostrará la información </p>';
         $html .= '<p> Aqui van los pedidos </p>';
         $html .= '<p> Aqui van los pedidos </p>';

@@ -8,14 +8,14 @@ class Pedido {
     private $id;
     private $id_client;
     private $date;
-    private $listProduct;
+    private $productList;
     private $price;
 
 
-    public function __construct($id_client, $date, $listProduct, $price){
+    public function __construct($id_client, $date, $productList, $price){
         $this->id_client= $id_client;
         $this->date = $date;
-        $this->listProduct = $listProduct;
+        $this->productList = $productList;
         $this->price = $price;
     }
 
@@ -31,8 +31,8 @@ class Pedido {
         return $this->date;
     }
 
-    public function listProduct(){
-        return $this->listProduct;
+    public function productList(){
+        return $this->productList;
     }
 
     public function price(){
@@ -67,7 +67,7 @@ class Pedido {
 
         $i = 0;
 
-        $productos = $pedido->listProduct;
+        $productos = $pedido->productList;
         
         $error = false;
         while($i < sizeof($productos) && ! $error){

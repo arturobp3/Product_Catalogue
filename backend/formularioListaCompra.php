@@ -1,9 +1,9 @@
 <?php
 
 require_once('form.php');
-require_once('../controller.php');
 require_once('cliente.php');
 require_once('pedido.php');
+require_once("producto.php");
 
 class formularioListaCompra extends Form{
 
@@ -21,9 +21,13 @@ class formularioListaCompra extends Form{
      */
     protected function generaCamposFormulario($datosIniciales){
 
-        //Obtenemos gracias al controlador los productos deseados
-
-        $result = Controller::productosEnLista();
+        //Obtenemos los productos deseados
+        if( ! isset($_SESSION['listaProductos']) || sizeof($_SESSION['listaProductos']) === 0){
+            $result = false;
+        }
+        else{
+            $result = $_SESSION['listaProductos'];
+        }
         
 		if($result === false){
 			echo "<h1 class='grupo-control'> No hay productos en tu lista </h1>";
@@ -60,27 +64,32 @@ class formularioListaCompra extends Form{
         $productos = $_SESSION['listaProductos'];
 
         //Obtenemos los productos en una lista de objetos y se los pasamos a realizar pedido
-        $listProduct = null;
+        $listaProductos = null;
         $price = 0;
         foreach($productos as $key => $value){
             $p = unserialize($value);
             $price += $p->price();
-            $listProduct[] = $p;
+            $listaProductos[] = $p;
         }
 
+        //Obtenemos la información del cliente
         $client = unserialize($_SESSION['cliente']);
+
+        //Creamos la fecha actual del pedido
         $fecha = date('Y-m-d H:i:s');
 
-        $pedido = new Pedido($client->id(), $fecha, $listProduct, $price);
-
+        //Realizamos el pedido
+        $pedido = new Pedido($client->id(), $fecha, $listaProductos, $price);
         $estado = Pedido::realizarPedido($pedido);
-
-        if($pedido === false){
+ 
+        if($estado === false){
             $erroresFormulario[] = "Ha habido algun problema al realizar el pedido";
         }
         else{
+            $productList = Producto::decrementQuantity($listaProductos);
 
-            //Generar factura XML
+            
+            //GENERAR FACTURAS XML
 
         }
         

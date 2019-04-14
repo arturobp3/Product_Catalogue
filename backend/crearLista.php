@@ -1,11 +1,11 @@
 <?php
 
 require_once('./config.php');
-require_once('../controller.php');
+require_once('producto.php');
 
 
 //Obtenemos el producto por su id
-$producto = Controller::prodPorId($_GET['id']);
+$producto = Producto::buscarPorId($_GET['id']);
 
 //Guardamos el producto con la clave de su id
 $_SESSION['listaProductos'][$_GET['id']] = serialize($producto);

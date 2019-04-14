@@ -123,11 +123,11 @@ class formularioRegistro extends Form{
                 $_SESSION['cliente'] = serialize($cliente);
 
 
-                /*$carpeta = './mysql/img/'.$username;
+                $carpeta = '../backend/mysql/facturas/'.$username;
             
                 if (!file_exists($carpeta)) {
                     mkdir($carpeta, 0777, true);
-                }*/
+                }
 
 
                 return "index.php";

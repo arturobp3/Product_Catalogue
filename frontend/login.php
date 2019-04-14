@@ -10,6 +10,7 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
 	<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 	<title>Iniciar Sesión | Product Catalog</title>
 </head>
 

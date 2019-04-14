@@ -1,7 +1,7 @@
 <?php
 	//Inicio del procesamiento
 	require_once("../backend/config.php");
-	require_once("../controller.php");
+	require_once("../backend/producto.php");
 ?>
 
 <!DOCTYPE html>
@@ -11,6 +11,7 @@
 	<meta charset="UTF-8">
 
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 </head>
 <body>
 
@@ -23,7 +24,7 @@
 			<?php 
 
 				//Obtenemos gracias al controlador los productos deseados
-				$result = Controller::prodPorId($_GET['id']);
+				$result = Producto::buscarPorId($_GET['id']);
 
 				if($result === false){
 					echo "<h1 class='mensaje'> Ups! Ese producto no existe! </h1>";

@@ -4,6 +4,7 @@ align-items: center en el eje Y*/
 *{
 	margin: 0;
 	padding: 0;
+	font-family: "Nunito";
 }
 
 body {

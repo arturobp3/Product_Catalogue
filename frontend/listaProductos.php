@@ -1,7 +1,8 @@
 <?php
 	//Inicio del procesamiento
 	require_once("../backend/config.php");
-	require_once("../controller.php");
+	require_once("../backend/producto.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -11,6 +12,7 @@
 	<meta charset="UTF-8">
 
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 </head>
 <body>
 
@@ -25,7 +27,7 @@
 				require("comun/sidebarIzq.php");
 
 				//Obtenemos gracias al controlador los productos deseados
-				$result = Controller::prodPorCategoria($_GET['categoria']);
+				$result = Producto::buscarPorCategoria($_GET['categoria']);
 
 				if($result === false){
 					echo "<h1 class='mensaje'> Ups! Esa categoría no existe! </h1>";

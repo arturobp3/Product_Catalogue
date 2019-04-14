@@ -109,30 +109,17 @@ class Producto {
     }
 
 
-    
-    
-    
-    public static function actualizaCantidad($producto, $cantidad){
-        if ($producto->id !== null) {
-            return self::actualiza($producto, $cant);
-        }
-        else{
-            echo "Error al actualizar cantidad. El id del producto no existe: (" . $conn->errno . ") " . utf8_encode($conn->error);
-        }
-    }
-
-
-    private static function actualiza($producto, $cant){
+    private static function actualiza($producto){
         $app = Aplicacion::getInstance();
         $conn = $app->conexionBD();
 
-        $query=sprintf("UPDATE producto U SET cantidad='%s' WHERE U.id='%i'"
-            , $conn->real_escape_string($cant)
+        $query=sprintf("UPDATE producto U SET cantidad = cantidad - 1 WHERE U.id='%s'"
             , $producto->id);
 
         if ( $conn->query($query) ) {
+
             if ( $conn->affected_rows != 1) {
-                echo "No se ha podido actualizar el cliente: " . $producto->id;
+                echo "No se ha podido actualizar el producto: " . $producto->id;
                 exit();
             }
         } else {
@@ -141,6 +128,21 @@ class Producto {
         }
         
         return $producto;
+    }
+
+    public static function decrementQuantity($productList){
+
+        foreach($productList as $p){
+
+            //Si tiene una cantidad mayor que 0 se actualiza.
+            if($p->quantity > 0){
+
+                $p->quantity = $p->quantity - 1;
+                self::actualiza($p);
+            }
+        }
+
+        return $productList;
     }
     
 }
