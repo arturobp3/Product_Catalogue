@@ -91,7 +91,7 @@ class formularioListaCompra extends Form{
 
 
             //Creamos la factura del pedido realizado por el cliente
-            FacturaXML::crearFactura($client, $pedido);
+            FacturaXML::generarFactura($client, $pedido);
         }
         
         unset($_SESSION['listaProductos']);

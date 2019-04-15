@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <Factura>
-  <id_Pedido>89</id_Pedido>
-  <Fecha>2019-04-14 22:49:16</Fecha>
+  <id_Pedido>96</id_Pedido>
+  <Fecha>2019-04-15 16:50:41</Fecha>
   <Empresa>Product Catalogue</Empresa>
   <ModoCompra>Online</ModoCompra>
   <Cliente>
@@ -13,11 +13,11 @@
   </Cliente>
   <ListaProductos>
     <Producto>
-      <id>3</id>
-      <Proveedor>samsung</Proveedor>
-      <Nombre>Samsung 860 EVO Basic SSD 500GB SATA3</Nombre>
-      <Precio>88</Precio>
+      <id>25</id>
+      <Proveedor>Intex</Proveedor>
+      <Nombre>Intex - Barca Hinchable con Remos</Nombre>
+      <Precio>120</Precio>
     </Producto>
   </ListaProductos>
-  <PrecioTotal>88</PrecioTotal>
+  <PrecioTotal>120</PrecioTotal>
 </Factura>

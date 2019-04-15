@@ -183,7 +183,10 @@ class Cliente {
         $app = Aplicacion::getInstance();
         $conn = $app->conexionBD();
 
-        $query = sprintf("SELECT * FROM pedido");
+        $query = sprintf("SELECT * 
+                          FROM realiza R JOIN pedido P
+                          WHERE R.id_cliente = $this->id 
+                            AND R.id_pedido = P.id");
 
         $rs = $conn->query($query);
         $result = false;

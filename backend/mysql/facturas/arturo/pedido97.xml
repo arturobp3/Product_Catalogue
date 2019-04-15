@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Factura>
+  <id_Pedido>97</id_Pedido>
+  <Fecha>2019-04-15 16:52:07</Fecha>
+  <Empresa>Product Catalogue</Empresa>
+  <ModoCompra>Online</ModoCompra>
+  <Cliente>
+    <id>4</id>
+    <Usuario>arturo</Usuario>
+    <Nombre>arturo</Nombre>
+    <Apellidos>barbero perez</Apellidos>
+    <DireccionEnvio>mi casa</DireccionEnvio>
+  </Cliente>
+  <ListaProductos>
+    <Producto>
+      <id>3</id>
+      <Proveedor>samsung</Proveedor>
+      <Nombre>Samsung 860 EVO Basic SSD 500GB SATA3</Nombre>
+      <Precio>88</Precio>
+    </Producto>
+    <Producto>
+      <id>4</id>
+      <Proveedor>apple</Proveedor>
+      <Nombre>Apple iMac i5 3GHz/8GB/1TB/Radeon Pro 555</Nombre>
+      <Precio>1349</Precio>
+    </Producto>
+    <Producto>
+      <id>6</id>
+      <Proveedor>xiaomi</Proveedor>
+      <Nombre>Xiaomi Mi Band 3 Pulsera de Actividad</Nombre>
+      <Precio>28</Precio>
+    </Producto>
+    <Producto>
+      <id>10</id>
+      <Proveedor>Legacy</Proveedor>
+      <Nombre>Michael Jackson - Thriller</Nombre>
+      <Precio>17</Precio>
+    </Producto>
+    <Producto>
+      <id>12</id>
+      <Proveedor>Sony</Proveedor>
+      <Nombre>Rosalía - El Mal Querer</Nombre>
+      <Precio>15</Precio>
+    </Producto>
+    <Producto>
+      <id>13</id>
+      <Proveedor>Warner Bros</Proveedor>
+      <Nombre>Dua Lipa - Complete Edition</Nombre>
+      <Precio>18</Precio>
+    </Producto>
+    <Producto>
+      <id>14</id>
+      <Proveedor>Interscope Records</Proveedor>
+      <Nombre>OneRepublic - Native</Nombre>
+      <Precio>9</Precio>
+    </Producto>
+    <Producto>
+      <id>15</id>
+      <Proveedor>Columbia</Proveedor>
+      <Nombre>Calvin Harris - 18 Months</Nombre>
+      <Precio>10</Precio>
+    </Producto>
+    <Producto>
+      <id>17</id>
+      <Proveedor>Molino</Proveedor>
+      <Nombre>Julio Verne - Veinte mil leguas de viaje submarino</Nombre>
+      <Precio>25</Precio>
+    </Producto>
+    <Producto>
+      <id>19</id>
+      <Proveedor>Debate</Proveedor>
+      <Nombre>W. Isaacson - Steve Jobs</Nombre>
+      <Precio>10</Precio>
+    </Producto>
+    <Producto>
+      <id>20</id>
+      <Proveedor>Clave</Proveedor>
+      <Nombre>R. Sharma - El Monje que vendió su Ferrari</Nombre>
+      <Precio>9</Precio>
+    </Producto>
+    <Producto>
+      <id>21</id>
+      <Proveedor>CreateSpace</Proveedor>
+      <Nombre>R. Gomez - El Libro Negro del Programador</Nombre>
+      <Precio>14</Precio>
+    </Producto>
+    <Producto>
+      <id>22</id>
+      <Proveedor>Salamandra</Proveedor>
+      <Nombre>J. Boyne - El niño del pijama de rayas</Nombre>
+      <Precio>7</Precio>
+    </Producto>
+    <Producto>
+      <id>23</id>
+      <Proveedor>RCLIA</Proveedor>
+      <Nombre>Rafael Caballero - Big Data con Python</Nombre>
+      <Precio>20</Precio>
+    </Producto>
+    <Producto>
+      <id>24</id>
+      <Proveedor>Cecotec</Proveedor>
+      <Nombre>Cecotec - Cinta para Correr</Nombre>
+      <Precio>214</Precio>
+    </Producto>
+    <Producto>
+      <id>25</id>
+      <Proveedor>Intex</Proveedor>
+      <Nombre>Intex - Barca Hinchable con Remos</Nombre>
+      <Precio>120</Precio>
+    </Producto>
+    <Producto>
+      <id>26</id>
+      <Proveedor>Under Armour</Proveedor>
+      <Nombre>Under Armour - Bolsa de Deporte</Nombre>
+      <Precio>30</Precio>
+    </Producto>
+    <Producto>
+      <id>27</id>
+      <Proveedor>SongMics</Proveedor>
+      <Nombre>Juego de Mancuernas ajustables</Nombre>
+      <Precio>50</Precio>
+    </Producto>
+    <Producto>
+      <id>29</id>
+      <Proveedor>EveShine</Proveedor>
+      <Nombre>Gafas de Natación</Nombre>
+      <Precio>11</Precio>
+    </Producto>
+    <Producto>
+      <id>30</id>
+      <Proveedor>K2 SNOWBOARD</Proveedor>
+      <Nombre>Tabla Snow K2 Standard</Nombre>
+      <Precio>240</Precio>
+    </Producto>
+  </ListaProductos>
+  <PrecioTotal>2284</PrecioTotal>
+</Factura>

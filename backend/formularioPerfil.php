@@ -66,34 +66,27 @@ class formularioPerfil extends Form{
         $pedidos = $datos->getPedidos();
 
         if($pedidos !== false){
-            /*$html .= '<p> (Rechazar Pedido) (Ver factura) del pedido 1: Al dar click hará unas consultas en un xml generado previamente
-                    y mostrará la información </p>';*/ 
+
+            $html .= '<h2> Mis pedidos </h2>';
+
             foreach($pedidos as $p){
                 $html .= '<div class="pedido">';
                 $html .= '<p>Número de pedido: '.$p['id'].'</p>';
                 $html .= '<p>Fecha: '.$p['fecha'].'</p>';
                 $html .= '<a href="../backend/utilsPedidos/cancelarPedido.php?id='.$p['id'].'&user='.$datos->username().'">
                             Cancelar</a>';
-                $html .= '<a href="../backend/utilsPedidos/verFactura.php?id='.$p['id'].'user='.$datos->username().'">
+                $html .= '<a href="../frontend/verFactura.php?id='.$p['id'].'">
                             Ver factura</a>';
                 $html .= '</div>';
             }
         }
         else{
-            $html .= '<h2 class="mensaje"> No se han realizado pedidos aún </h2>';
+            $html .= '<h2> No se han realizado pedidos aún </h2>';
         }
 
         $html .= '</div>';
 
         return $html;
-    }
-
-
-    //Funcion llamada por el boton cancelar de cada uno de los pedidos
-    private function cancelarPedido($p){
-        echo $p['id'];
-        exit();
-
     }
 
 
@@ -118,15 +111,6 @@ class formularioPerfil extends Form{
             Cliente::guarda($datos);
 
             return "index.php";
-        }
-
-        
-        if(array_key_exists('cancel',$_POST)){
-            self::cancelarPedido($_POST);
-        }
-        else if(array_key_exists('factura',$_POST)){
-            //self::verFactura();
-            echo "Hola";
         }
 
         return $erroresFormulario;

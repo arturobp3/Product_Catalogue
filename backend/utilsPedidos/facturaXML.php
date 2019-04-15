@@ -2,7 +2,24 @@
 
 class FacturaXML{
 
-    public static function crearFactura($cliente, $pedido){
+    private $ruta;
+    private $ObjetoXML;
+
+    public function __construct($id_pedido, $user){
+        //Establecemos la ruta donde está la factura
+        $this->ruta = "../backend/mysql/facturas/".$user."/pedido".$id_pedido.".xml";
+
+        if (file_exists($this->ruta)) {
+            //Cargamos el objetoXML
+            $this->ObjetoXML = simplexml_load_file($this->ruta);
+        }
+        else{
+            $this->ObjetoXML = null;
+        }
+    }
+
+    //Genera la factura en la carpeta adecuada
+    public static function generarFactura($cliente, $pedido){
 
         //Elemento principal: <Factura>
         $xml = new SimpleXMLElement('<?xml version="1.0" encoding="iso-8859-1" ?><Factura/>');
@@ -50,7 +67,16 @@ class FacturaXML{
     }
 
 
-    //$xml = simplexml_load_file($ruta);
+    //Devuelve los datos del archivo xml
+    public function getFactura(){
 
+        if($this->ObjetoXML !== null ){
 
+            //Realizamos la consulta en XPATH
+            return $this->ObjetoXML->xpath("/Factura")[0];
+        }
+        else{
+            return null;
+        }
+    }
 }
