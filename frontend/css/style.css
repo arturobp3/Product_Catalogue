@@ -408,6 +408,14 @@ main #formInicial #perfil .line-3{
 }
 
 
+/*TABLAS FACTURAS*/
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	padding: 5px;
+}
+
+
 
 
 
