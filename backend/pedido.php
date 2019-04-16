@@ -1,7 +1,7 @@
 <?php
 
 require_once("config.php");
-require_once('aplicacion.php');
+require_once('MySQL.php');
 
 class Pedido {
 
@@ -42,8 +42,8 @@ class Pedido {
     
     //Inserta la información correspondiente en la tabla realiza de la bbdd
     private function insertaRealiza($pedido){
-        $app = Aplicacion::getInstance();
-        $conn = $app->conexionBD();
+        $app = MySQL::getInstanceMySQL();
+        $conn = $app->conexionMySQL();
 
         $query=sprintf("INSERT INTO realiza(id_cliente, id_pedido, precioTotal) VALUES('%s', '%s', '%s')" 
         , $conn->real_escape_string($pedido->id_client)
@@ -62,8 +62,8 @@ class Pedido {
     //que no haya habido ningun error
     private function insertaTiene($pedido){
 
-        $app = Aplicacion::getInstance();
-        $conn = $app->conexionBD();
+        $app = MySQL::getInstanceMySQL();
+        $conn = $app->conexionMySQL();
 
         $i = 0;
 
@@ -89,8 +89,8 @@ class Pedido {
     //Inserta un pedido en la tabla Pedido 
     private function insertaPedido($pedido){
 
-        $app = Aplicacion::getInstance();
-        $conn = $app->conexionBD();
+        $app = MySQL::getInstanceMySQL();
+        $conn = $app->conexionMySQL();
 
         
         $query=sprintf("INSERT INTO pedido(fecha) VALUES('%s')", $conn->real_escape_string($pedido->date));
@@ -108,8 +108,8 @@ class Pedido {
 
     public static function cancelarPedido($id){
         
-        $app = Aplicacion::getInstance();
-        $conn = $app->conexionBD();
+        $app = MySQL::getInstanceMySQL();
+        $conn = $app->conexionMySQL();
 
         //No se puede producir inyeccion SQL puesto que esta función se la llama en un archivo donde 
         //se recibe un id por GET de manera estática y seguidamente redirige a otra página.
@@ -133,8 +133,8 @@ class Pedido {
     //Funcion principal para poder realizar un pedido
     public static function realizarPedido($pedido){
 
-        $app = Aplicacion::getInstance();
-        $conn = $app->conexionBD();
+        $app = MySQL::getInstanceMySQL();
+        $conn = $app->conexionMySQL();
 
         //Inserta en la primera tabla
         $pedido = self::insertaPedido($pedido);

@@ -1,6 +1,6 @@
 <?php
 
-require_once('aplicacion.php');
+require_once('MySQL.php');
 
 class Cliente {
 
@@ -62,8 +62,8 @@ class Cliente {
     /* Devuelve un objeto cliente con la información del cliente $username,
      o false si no lo encuentra*/
     public static function buscacliente($username){
-        $app = Aplicacion::getInstance();
-        $conn = $app->conexionBD();
+        $app = MySQL::getInstanceMySQL();
+        $conn = $app->conexionMySQL();
 
         $query = sprintf("SELECT * FROM cliente U WHERE U.user = '%s'", $conn->real_escape_string($username));
         $rs = $conn->query($query);
@@ -132,8 +132,8 @@ class Cliente {
     }
     
     private static function inserta($cliente){
-        $app = Aplicacion::getInstance();
-        $conn = $app->conexionBD();
+        $app = MySQL::getInstanceMySQL();
+        $conn = $app->conexionMySQL();
         $query=sprintf("INSERT INTO cliente(user, pass, email, nombre, apellidos, direccion) 
                         VALUES('%s', '%s', '%s', '%s', '%s', '%s')"
             , $conn->real_escape_string($cliente->username)
@@ -153,8 +153,8 @@ class Cliente {
     }
     
     private static function actualiza($cliente){
-        $app = Aplicacion::getInstance();
-        $conn = $app->conexionBD();
+        $app = MySQL::getInstanceMySQL();
+        $conn = $app->conexionMySQL();
 
 
         $query=sprintf("UPDATE cliente U 
@@ -180,8 +180,8 @@ class Cliente {
 
     public function getPedidos(){
 
-        $app = Aplicacion::getInstance();
-        $conn = $app->conexionBD();
+        $app = MySQL::getInstanceMySQL();
+        $conn = $app->conexionMySQL();
 
         $query = sprintf("SELECT * 
                           FROM realiza R JOIN pedido P

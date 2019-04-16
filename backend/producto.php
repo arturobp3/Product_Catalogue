@@ -1,7 +1,7 @@
 <?php
 
 require_once("config.php");
-require_once('aplicacion.php');
+require_once('MySQL.php');
 
 class Producto {
 
@@ -50,9 +50,9 @@ class Producto {
     /* Devuelve un objeto cliente con la información del cliente $username,
      o false si no lo encuentra*/
     public static function buscarPorCategoria($category){
-        $app = Aplicacion::getInstance();
+        $app = MySQL::getInstanceMySQL();
 
-        $conn = $app->conexionBD();
+        $conn = $app->conexionMySQL();
 
         $query = sprintf("SELECT * FROM producto U WHERE U.categoria = '%s'", $conn->real_escape_string($category));
         $rs = $conn->query($query);
@@ -81,8 +81,8 @@ class Producto {
     }
 
     public static function buscarPorId($id){
-        $app = Aplicacion::getInstance();
-        $conn = $app->conexionBD();
+        $app = MySQL::getInstanceMySQL();
+        $conn = $app->conexionMySQL();
 
         $query = sprintf("SELECT * FROM producto U WHERE U.id = '%s'", $conn->real_escape_string($id));
         $rs = $conn->query($query);
@@ -110,8 +110,8 @@ class Producto {
 
 
     private static function actualiza($producto, $cantidad){
-        $app = Aplicacion::getInstance();
-        $conn = $app->conexionBD();
+        $app = MySQL::getInstanceMySQL();
+        $conn = $app->conexionMySQL();
 
         $query=sprintf("UPDATE producto U SET cantidad = cantidad + $cantidad WHERE U.id='%s'"
             , $producto);
@@ -146,8 +146,8 @@ class Producto {
     }
 
     public static function incrementQuantity($id_pedido){
-        $app = Aplicacion::getInstance();
-        $conn = $app->conexionBD();
+        $app = MySQL::getInstanceMySQL();
+        $conn = $app->conexionMySQL();
 
         $query = sprintf("SELECT * FROM tiene U WHERE U.id_pedido = '%s'", $conn->real_escape_string($id_pedido));
         $rs = $conn->query($query);

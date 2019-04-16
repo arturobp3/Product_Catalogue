@@ -1,6 +1,17 @@
 <?php
 
-require_once('aplicacion.php');
+require_once('MySQL.php');
+require_once('MongoDB.php');
+
+/**
+ * Configuración del soporte de UTF-8, localización (idioma y país) y zona horaria
+ */
+session_start();
+ini_set('default_charset', 'UTF-8');
+setlocale(LC_ALL, 'es_ES.UTF.8');
+date_default_timezone_get();
+
+/*--------------------------------------------------------------------------------------------*/
 
 /**
  * Parámetros de conexión a la BD MySQL
@@ -11,60 +22,32 @@ define('BD_USER', 'root');
 define('BD_PASS', '');
 
 
-/**
- * Configuración del soporte de UTF-8, localización (idioma y país) y zona horaria
- */
-session_start();
-ini_set('default_charset', 'UTF-8');
-setlocale(LC_ALL, 'es_ES.UTF.8');
-date_default_timezone_get();
+// Creamos la instancia de MySQL
+$appMySQL = MySQL::getInstanceMySQL();
 
-// Inicializa la aplicación
-$app = Aplicacion::getInstance();
+//Inicializamos MySQL
+$appMySQL->initMySQL(array('host'=>BD_HOST, 'bd'=>BD_NAME, 'user'=>BD_USER, 'pass'=>BD_PASS));
 
-$app->init(array('host'=>BD_HOST, 'bd'=>BD_NAME, 'user'=>BD_USER, 'pass'=>BD_PASS));
+//Registramos la función shutdownMySQL como aquella que cierra la conexión con la bbdd
+register_shutdown_function(array($appMySQL, 'shutdownMySQL'));
 
-
-register_shutdown_function(array($app, 'shutdown'));
-
+/*--------------------------------------------------------------------------------------------*/
 
 /**
- * An example of a project-specific implementation.
- *
- * After registering this autoload function with SPL, the following line
- * would cause the function to attempt to load the \Foo\Bar\Baz\Qux class
- * from /path/to/project/src/Baz/Qux.php:
- *
- *      new \Foo\Bar\Baz\Qux;
- *
- * @param string $class The fully-qualified class name.
- * @return void
+ * Parámetros de conexión a la BD MongoDB
  */
-spl_autoload_register(function ($class) {
+define('BD_HOST_MDB', 'mongodb://localhost:27017');
+define('BD_NAME_MDB', 'Product_Catalogue');
 
-    // project-specific namespace prefix
-    $prefix = 'include';
 
-    // base directory for the namespace prefix
-    $base_dir = __DIR__ . '\fdi';
+// Creamos la instancia de MongoDB
+$appMongoDB = MongoDB::getInstanceMongoDB();
 
-    // does the class use the namespace prefix?
-    $len = strlen($prefix);
-    if (strncmp($prefix, $class, $len) !== 0) {
-        // no, move to the next registered autoloader
-        return;
-    }
+//Inicializamos MongoDB
+$appMongoDB->initMongoDB(array('host'=>BD_HOST_MDB, 'name' => BD_NAME_MDB));
 
-    // get the relative class name
-    $relative_class = substr($class, $len);
+//Registramos la función shutdownMongoDB como aquella que cierra la conexión con la bbdd
+register_shutdown_function(array($appMongoDB, 'shutdownMongoDB'));
 
-    // replace the namespace prefix with the base directory, replace namespace
-    // separators with directory separators in the relative class name, append
-    // with .php
-    $file = $base_dir . str_replace('\\', '/', $relative_class) . '.php';
 
-    // if the file exists, require it
-    if (file_exists($file)) {
-        require $file;
-    }
-});
+

@@ -1,12 +1,10 @@
 <?php
 
+class MongoDB{
 
-/**
- * Clase que mantiene el estado de la aplicacion utilizando el patron Singleton
- */
-class Aplicacion{
-
-    //Instancia Singleton
+    /*ATRIBUTOS PARA LA CONEXIÓN A MongoDB*/
+    /*------------------------------------*/
+    //Instancia Singleton (Permite una sola creación de objeto de esta clase)
     private static $instance;
 
     // Booleano para saber si la aplicación ha sido inicializada
@@ -19,7 +17,7 @@ class Aplicacion{
     private $conn;
 
 
-    public static function getInstance(){
+    public static function getInstanceMongoDB(){
 
         if(! isset(self::$instance)){
             self::$instance = new self;
@@ -28,7 +26,7 @@ class Aplicacion{
         return self::$instance;
     }
 
-    public function init($datosBD){
+    public function initMongoDB($datosBD){
         if(! $this->ini){
 
             $this->bdConexion = $datosBD;
@@ -36,26 +34,31 @@ class Aplicacion{
         }
     }
 
-    public function conexionBD(){
+    public function conexionMongoDB(){
         //Si la aplicacion se ha inicializado
         if($this->ini){
 
             //Si NO se ha creado una conexión con la BD
             if(! $this->conn){
+ 
                 $host = $this->bdConexion['host'];
-                $user = $this->bdConexion['user'];
-                $pass = $this->bdConexion['pass'];
-                $bd = $this->bdConexion['bd'];
+                $name = $this->bdConexion['name'];
 
                 //Realiza la conexion
-                $this->conn = new \mysqli($host, $user, $pass, $bd);
-                if ( $this->conn->connect_errno ) {
-                    echo "Error de conexión a la BD: (" . $this->conn->connect_errno . ") " . utf8_encode($this->conn->connect_error);
+                $connection = new MongoClient($host);
+                
+                if( ! $connection->connected){
+                    echo "Error de conexión a la BD MongoDB";
                     exit();
                 }
-                if ( ! $this->conn->set_charset("utf8mb4")) {
-                    echo "Error al configurar la codificación de la BD: (" . $this->conn->errno . ") " . utf8_encode($this->conn->error);
-                    exit();
+                else{
+                    try{
+                        $this->conn = $connection->selectDB($name);
+                    }
+                    catch(Exception $e){
+                        echo "No existe la base de datos ".$name." en MongoDB";
+                        exit();
+                    }
                 }
             }
 
@@ -64,22 +67,21 @@ class Aplicacion{
         else{
             echo "Aplicacion no inicializada";
             exit();
-        }
-	    
+        } 
     }
-    
-    public function shutdown(){
 
-         //Si la aplicacion se ha inicializado
+    public function shutdownMongoDB(){
+
+        //Si la aplicacion se ha inicializado
         if($this->ini){
             //Si se ha realizado una conexion
             if ($this->conn !== null) {
                 $this->conn->close();
             }
         }
-         else{
+        else{
             echo "Aplicacion no inicializada";
             exit();
         }
-	}
+    }
 }

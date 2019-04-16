@@ -1,0 +1,18 @@
+{
+        "_id" : "2",
+        "informacion" : "-Mas rendimiento. Desde el procesador hasta el último tornillo. El nuevo iMac pisa el acelerador con procesadores Intel Core i5 de séptima generación y las tecnologías gráficas más avanzadas. \n - Tus proyectos, por la vía rápida. Ahora todos los iMac llevan un nuevo procesador Intel Core de séptima generación para funcionar a mayor velocidad, concretamente hasta 4,2 GHz en el modelo de 27 pulgadas y hasta 3,6 GHz en el de 21,5 pulgadas. Y cuando lo necesitas con aplicaciones exigentes como Logic Pro o Final Cut Pro, el Turbo Boost aumenta la velocidad de los procesadores para disparar el rendimiento.Esto lo hace automáticamente, tú solo notarás que acabas antes de hacer las cosas. \n - Más luz. Muchos más colores. La pantalla Retina brilla con fuerza en el nuevo iMac. Con mil millones de colores y 500 nits de brillo, los gráficos tienen una calidad y definición asombrosas. La densidad de píxeles es tan alta que el ojo no los distingue, lo único que ve es nitidez. Así que leer emails o documentos es un placer. Está clarísimo: es la mejor pantalla Retina que jamás haya tenido un Mac.",
+        "comentarios" : [ 
+            {
+                "nombre" : "Arturo",
+                "fecha" : "Una fecha",
+                "comentario" : "Pedazo producto",
+                "respuestas" : [ 
+                    {
+                        "nombre" : "Antonio",
+                        "fecha" : "Otra fecha",
+                        "comentario" : "Tampoco es para tanto"
+                    }
+                ]
+            }
+        ]
+}
