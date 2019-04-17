@@ -37,17 +37,16 @@ register_shutdown_function(array($appMySQL, 'shutdownMySQL'));
  * Parámetros de conexión a la BD MongoDB
  */
 define('BD_HOST_MDB', 'mongodb://localhost:27017');
-define('BD_NAME_MDB', 'Product_Catalogue');
 
 
 // Creamos la instancia de MongoDB
 $appMongoDB = MongoDB::getInstanceMongoDB();
 
 //Inicializamos MongoDB
-$appMongoDB->initMongoDB(array('host'=>BD_HOST_MDB, 'name' => BD_NAME_MDB));
+$appMongoDB->initMongoDB(array('host'=>BD_HOST_MDB));
 
 //Registramos la función shutdownMongoDB como aquella que cierra la conexión con la bbdd
-register_shutdown_function(array($appMongoDB, 'shutdownMongoDB'));
+//register_shutdown_function(array($appMongoDB, 'shutdownMongoDB'));
 
 
 

@@ -42,24 +42,10 @@ class MongoDB{
             if(! $this->conn){
  
                 $host = $this->bdConexion['host'];
-                $name = $this->bdConexion['name'];
 
                 //Realiza la conexion
-                $connection = new MongoClient($host);
-                
-                if( ! $connection->connected){
-                    echo "Error de conexión a la BD MongoDB";
-                    exit();
-                }
-                else{
-                    try{
-                        $this->conn = $connection->selectDB($name);
-                    }
-                    catch(Exception $e){
-                        echo "No existe la base de datos ".$name." en MongoDB";
-                        exit();
-                    }
-                }
+ 
+                $this->conn = new MongoDB\Driver\Manager($host);
             }
 
             return $this->conn; 
@@ -70,7 +56,7 @@ class MongoDB{
         } 
     }
 
-    public function shutdownMongoDB(){
+    /*public function shutdownMongoDB(){
 
         //Si la aplicacion se ha inicializado
         if($this->ini){
@@ -83,5 +69,5 @@ class MongoDB{
             echo "Aplicacion no inicializada";
             exit();
         }
-    }
+    }*/
 }

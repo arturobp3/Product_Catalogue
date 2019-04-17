@@ -1,0 +1,23 @@
+{
+        "_id" : "id del producto",
+        "informacion" : "Contiene la información de un producto",
+        "comentarios" : [ 
+            {
+                "nombre" : "Arturo",
+                "fecha" : "Una fecha",
+                "comentario" : "Un comentario",
+                "respuestas" : [ 
+                    {
+                        "nombre" : "Un nombre",
+                        "fecha" : "Otra fecha",
+                        "comentario" : "Otro comentario"
+                    },
+                    {
+                        "nombre" : "Otro nombre",
+                        "fecha" : "Otra fecha más",
+                        "comentario" : "Otro comentario más"
+                    }
+                ]
+            }
+        ]
+}

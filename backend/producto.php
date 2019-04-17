@@ -2,6 +2,7 @@
 
 require_once("config.php");
 require_once('MySQL.php');
+require_once('MongoDB.php');
 
 class Producto {
 
@@ -11,6 +12,7 @@ class Producto {
     private $category;
     private $brand;
     private $price;
+    private $infoMongoDB;
 
 
 
@@ -44,6 +46,10 @@ class Producto {
 
     public function price(){
         return $this->price;
+    }
+
+    public function info(){
+        return $this->infoMongoDB;
     }
 
 
@@ -91,10 +97,29 @@ class Producto {
         if ($rs) {
             if ( $rs->num_rows > 0) {
 
+                $mongo = MongoDB::getInstanceMongoDB();
+                $connectMongo = $mongo->conexionMongoDB();
+
+
+                //Creamos las condiciones para la consulta
+                $filter = ['_id' => $id];
+
+                $query = new MongoDB\Driver\Query($filter);
+
+
+                //Seleccionamos la base de datos y la coleccion sobre la que vamos a realizar la consulta
+                $rsMongoCursor = $connectMongo->executeQuery("Product_Catalogue.InfoProducto", $query);
+                //Ha devuelto un cursor
+
+                //Convertimos los datos del cursor en un array
+                $datosMongoDB = $rsMongoCursor->toArray()[0];
+                
                 $fila = $rs->fetch_assoc();
                 $producto = new Producto($fila['nombre'],  $fila['cantidad'], $fila['categoria'],
                                     $fila['marca'], $fila['precioEuros']);
                 $producto->id = $fila['id'];
+
+                $producto->infoMongoDB = $datosMongoDB->informacion;
 
                 $result = $producto;
             }

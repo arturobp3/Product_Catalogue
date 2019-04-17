@@ -153,6 +153,7 @@ main .content{
 
 main .content{
 	color: white;
+	
 }
 
 main .mensaje{
@@ -330,6 +331,12 @@ main #formInicial #perfil .line-3{
 				/* PRODUCTO */
 /*---------------------------------------------*/
 
+.content{
+	display: flex;
+	min-height: 100vh;
+	justify-content: space-between;
+}
+
 .panel1, .panel2, .panel3{
 	display: flex;
 	flex-direction: row;
@@ -356,15 +363,8 @@ main #formInicial #perfil .line-3{
 	flex-direction: column;
 	align-items: center;
 	width: 70%;
+	height: 80%;
 	padding: 2%;
-}
-
-.panel1-2 p{
-	padding: 2%;
-	font-family: monospace;
-	font-size: 1.1em;
-	line-height: 1.5;
-	text-align: justify;
 }
 
 .panel2{
@@ -377,14 +377,25 @@ main #formInicial #perfil .line-3{
 	font-size: 2.5em;
 }
 
+
+h3{
+	margin-top: 8%;
+	font-size: 1.5em;
+}
+
 .panel3{
-	margin: 2%;
-	margin-top: 30px;
-	height: 50vh;
-	border-radius: 5%;
-	border: 5px solid #00303F;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 50vh;
 	padding: 8px;
-	background-color:#025E7A;
+}
+
+.panel3 #comentarios{
+	border-top: 6px solid #00303F;
+	height: 100vh;
+	width: 70%;
 }
 
 
@@ -426,7 +437,7 @@ footer{
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	font-size: 0.75em;
+	font-size: 1em;
 	padding: 15px 15px;
 	background-color: #00303F;
 	color: white;

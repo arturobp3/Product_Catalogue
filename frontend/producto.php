@@ -42,23 +42,8 @@
 							<div class='panel1-2'>
 								<h1>".$result->name()."</h1>
 								<p> Proveedor: ".$result->brand()."</p>
-								<p>Sin cables. Sin líos. Como por arte magia. Si hablamos de auriculares,
-								los AirPods son otra historia. Se activan y se conectan solos a tu iPhone,
-								Apple Watch, iPad o Mac en cuanto los sacas del estuche. El audio comienza 
-								a sonar cuando te los pones y se detiene cuando te los quitas. Y puedes 
-								activar Siri con dos toques para ajustar el volumen, cambiar de canción, 
-								obtener indicaciones o hacer una llamada. 
-								Los AirPods incorporan el chip W1 de Apple y utilizan sensores ópticos y 
-								un acelerómetro para detectar si los llevas puestos. Tanto si estás usando 
-								los dos como uno solo, el chip W1 distribuye el sonido y activa el micrófono 
-								automáticamente. Cuando hablas por teléfono o pides algo a Siri, un segundo 
-								acelerómetro activa los micrófonos con tecnología beamforming para filtrar 
-								el ruido de fondo y llevar tu voz al primer plano. El chip W1 es tan eficiente 
-								que los AirPods funcionan durante 5 horas con una sola carga, algo único en el 
-								mercado. Pero es que además están siempre listos para regalarte los oídos 
-								gracias al estuche, que te da varias cargas adicionales para que disfrutes de 
-								más de 24 horas de uso. ¿Tienes prisa? Mete los auriculares en el estuche 
-								durante 15 minutos y los tendrás cargados para 3 horas. </p>
+								<br>
+								<p>".$result->info()."</p>
 							</div>
 						</div>
 						<div class='panel2'>
@@ -69,11 +54,17 @@
 
 						</div>
 
+						<script> cambiarComprar(".$result->quantity()."); </script>
+
+						
 						<div class='panel3'>
-							<p> Comentarios mongoDB</p>
+							<h3> COMENTARIOS </h3>
+							<div id='comentarios'>
+
+
+							</div>
 						</div>
 
-						<script> cambiarComprar(".$result->quantity()."); </script>
 
 					</div>";
 			?>
