@@ -13,6 +13,7 @@ class Producto {
     private $brand;
     private $price;
     private $infoMongoDB;
+    private $comentarios;
 
 
 
@@ -50,6 +51,10 @@ class Producto {
 
     public function info(){
         return $this->infoMongoDB;
+    }
+
+    public function comentarios(){
+        return $this->comentarios;
     }
 
 
@@ -120,6 +125,11 @@ class Producto {
                 $producto->id = $fila['id'];
 
                 $producto->infoMongoDB = $datosMongoDB->informacion;
+                $producto->comentarios = $datosMongoDB->comentarios;
+
+                //var_dump($producto->comentarios[0]->nombre);
+               
+          
 
                 $result = $producto;
             }

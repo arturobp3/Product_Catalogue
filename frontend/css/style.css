@@ -383,20 +383,81 @@ h3{
 	font-size: 1.5em;
 }
 
+				/*COMENTARIOS*/
+/*---------------------------------------------*/
+
 .panel3{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-around;
 	min-height: 50vh;
+	border: 2px solid black;
 	padding: 8px;
 }
 
+.panel3 .fecha{
+	color: grey;
+}
+
+.panel3 #text{
+
+}
+
 .panel3 #comentarios{
-	border-top: 6px solid #00303F;
-	height: 100vh;
+	border-left: 3px solid #00303F;
+	border-right: 3px solid #00303F;
+	border-top: 1px solid #00303F;
 	width: 70%;
 }
+
+.panel3 #comentarios #user{
+	background-color: #00303F;
+	border-bottom: 1.5px solid white;
+	padding-left: 3%;
+
+}
+
+.panel3 #comentarios #user:focus{
+	outline:0;
+}
+
+
+.panel3 #comentarios #cajaComentario{
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: space-between;
+	background-color: #CAE4DB;
+	color: #00303F;
+	font-weight: bolder;
+	/*border-bottom: 0.25px solid #00303F;*/
+	border: 3px solid green;
+	padding: 2%;
+}
+
+.panel3 #comentarios #cajaComentario #comentario{
+	font-size: 1.15em;
+}
+
+.panel3 #comentarios #cajaComentario #toggleResponse{
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: space-between;
+	height: auto;
+	width: 85%;
+	margin-left: 7%;
+	margin-top: 2%;
+	border: 2px solid red;
+}
+
+.panel3 #comentarios #cajaComentario #toggleResponse #cajaRespuesta{
+	padding: 3%;
+	border: 2px solid blue;
+}
+
+
 
 
 			/*Lista de la compra*/

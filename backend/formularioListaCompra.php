@@ -77,7 +77,8 @@ class formularioListaCompra extends Form{
         $client = unserialize($_SESSION['cliente']);
 
         //Creamos la fecha actual del pedido
-        $fecha = date('Y-m-d H:i:s');
+        $fecha = date('F j, Y, g:i a');
+
 
         //Realizamos el pedido
         $pedido = new Pedido($client->id(), $fecha, $listaProductos, $price);
