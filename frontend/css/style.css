@@ -394,15 +394,52 @@ h3{
 	min-height: 50vh;
 	border: 2px solid black;
 	padding: 8px;
+	margin-top: 4%;
+}
+
+.panel3 #texto{
+	margin-bottom: 2%;
+}
+
+.panel3 form{
+	display: flex;
+	flex-direction: row;
+	width: 70%;
+	margin-bottom: 2%;
+}
+
+.panel3 #commentForm textarea{
+	width: 100%;
+	resize: none;
+	border-radius: 15px;
+	padding: 2px 20px;
+	color: #00303F;
+	font-weight: bolder;
+	font-size: 1.1em;
+	border: 3px solid #00303F;
+}
+
+.panel3 form textarea:focus{
+	outline:0;
+}
+
+.panel3 form #submit{
+	padding: 10px;
+	background-color: #025E7A;
+}
+
+.panel3 form #submit:focus{
+	outline: 0;
+}
+.panel3 form #submit:hover{
+	background-color: #DCAE1D;
 }
 
 .panel3 .fecha{
 	color: grey;
 }
 
-.panel3 #text{
 
-}
 
 .panel3 #comentarios{
 	border-left: 3px solid #00303F;
@@ -415,7 +452,9 @@ h3{
 	background-color: #00303F;
 	border-bottom: 1.5px solid white;
 	padding-left: 3%;
-
+}
+.panel3 #comentarios #user:hover{
+	background-color: #025E7A;
 }
 
 .panel3 #comentarios #user:focus{
@@ -440,7 +479,7 @@ h3{
 	font-size: 1.15em;
 }
 
-.panel3 #comentarios #cajaComentario #toggleResponse{
+.panel3 #comentarios #cajaComentario .toggle{
 	display: flex;
 	flex-direction: column;
 	align-content: center;
@@ -452,7 +491,7 @@ h3{
 	border: 2px solid red;
 }
 
-.panel3 #comentarios #cajaComentario #toggleResponse #cajaRespuesta{
+.panel3 #comentarios #cajaComentario .toggle #cajaRespuesta{
 	padding: 3%;
 	border: 2px solid blue;
 }

@@ -127,10 +127,7 @@ class Producto {
                 $producto->infoMongoDB = $datosMongoDB->informacion;
                 $producto->comentarios = $datosMongoDB->comentarios;
 
-                //var_dump($producto->comentarios[0]->nombre);
                
-          
-
                 $result = $producto;
             }
             $rs->free();

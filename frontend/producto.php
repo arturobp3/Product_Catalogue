@@ -2,6 +2,7 @@
 	//Inicio del procesamiento
 	require_once("../backend/config.php");
 	require_once("../backend/producto.php");
+	require_once("../backend/cliente.php");
 ?>
 
 <!DOCTYPE html>
@@ -12,6 +13,8 @@
 
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+	<script src='./javascript/productAvailable.js'></script>
 
 	<!-- jQuery para la parte de los comentarios-->
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -31,6 +34,7 @@
 
 		//Obtenemos gracias al controlador los productos deseados
 		$result = Producto::buscarPorId($_GET['id']);
+		$id = $result->id();
 
 		if($result === false){
 			echo "<h1 class='mensaje'> Ups! Ese producto no existe! </h1>";
@@ -39,7 +43,6 @@
 			
 		$html = "<div class='content'>
 
-				<script src='./javascript/productAvailable.js'></script>
 			
 				<div class='panel1'>
 					<img src='../backend/mysql/products/".$result->id().".jpg'>
@@ -63,34 +66,46 @@
 
 				
 				<div class='panel3'>
+					<h2 id='texto'> Deja tu comentario </h2>
 					<form method='post' id='commentForm'>
-						<textarea name='comment' id='comment' class='textAreaComment' placeholder='Deja tu comentario'
-							rows='4'>
-						</textarea>
-						<input type='submit' name='submit' id='submit' value='Comentar'/>
+						<textarea name='comment' id='comment' rows='2'></textarea>
+						<button type='button' onclick='procesarComentario($id)' 
+							name='submit' id='submit'> Comentar </button>
 					</form>
+					<p id='mensaje'></p>
 					<div id='comentarios'>";
 
 					for($i = 0; $i < sizeof($result->comentarios()); $i++){
 
 						$html .= "<h2 id='user'>".$result->comentarios()[$i]->nombre."</h2>
 								<div id='cajaComentario'>
-									<p class='fecha'>Fecha: ".$result->comentarios()[$i]->fecha."</p>
+									<p class='fecha'>".$result->comentarios()[$i]->fecha."</p>
 									<p id='comentario'>".$result->comentarios()[$i]->comentario."</p>
-									<div id='toggleResponse'>";
+									<a id='btnResponse$i' onclick='mostrarRespuestas($i)'>Ver respuestas</a>
+									<div id='toggleResponse$i' class='toggle'>";
 
-									for($j = 0; $j < sizeof($result->comentarios()[$i]->respuestas); $j++){
+									if(sizeof($result->comentarios()[$i]->respuestas) > 0){
+										for($j = 0; $j < sizeof($result->comentarios()[$i]->respuestas); $j++){
 
-										$html .= "<div id='cajaRespuesta'>
-													<p id='nombre'>".$result->comentarios()[$i]->respuestas[$j]->nombre."</p>
-													<p class='fecha'>Fecha: ".$result->comentarios()[$i]->respuestas[$j]->fecha."</p>
-													<p id='respuesta'>".$result->comentarios()[$i]->respuestas[$j]->comentario."</p>
-												</div>";
+											$html .= "<div id='cajaRespuesta'>
+														<p id='nombre'>".$result->comentarios()[$i]->respuestas[$j]->nombre."</p>
+														<p class='fecha'>Fecha: ".$result->comentarios()[$i]->respuestas[$j]->fecha."</p>
+														<p id='respuesta'>".$result->comentarios()[$i]->respuestas[$j]->comentario."</p>
+													</div>";
+										}
 									}
-						$html .= "</div>
-
-							</div>";
+									else $html .= '<p> No ha respondido nadie </p>';
+								
+									//Cierra id='toggleResponse'
+						$html .= "</div> 
+								<form method='post' id='responseForm'>
+									<textarea name='comment' id='comment' rows='1'></textarea>
+									<button type='button' onclick='procesarRespuesta($id)' 
+										id='responseButton'> Responder </button>
+								</form>
+							</div>"; //Cierra id='cajaComentario'
 					}
+					//Cierra id='comentarios'
 			$html .= "</div>
 						
 			</div>
