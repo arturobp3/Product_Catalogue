@@ -60,7 +60,7 @@ function mostrarRespuestas(i){
     } );
 }
 
-function mostrarAreaRespuesta(idx, idProd){
+function mostrarAreaRespuesta(idx, idProd, id_comment){
 
     $(document).ready(function(){
         
@@ -80,7 +80,7 @@ function mostrarAreaRespuesta(idx, idProd){
 
         else{
             //Procesamos la respuesta que el usuario ha puesto
-            procesarRespuesta(idx, idProd);
+            procesarRespuesta(idx, idProd, id_comment);
 
             //Cambiamos a responder
             $('#responseButton'+idx).html("Responder");

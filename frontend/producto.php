@@ -97,12 +97,13 @@
 									}
 									else $html .= '<p> No ha respondido nadie </p>';
 
-						$idComment = $result->comentarios()[$i]->_id;
 								
+						$id_comment = $result->comentarios()[$i]->_id;
+
 									//Cierra id='toggleResponse'
-						$html .= "</div> 
+						$html .= "</div>
 								<form method='post' id='responseForm'>
-									<button type='button' onclick='mostrarAreaRespuesta($i, $id)' 
+									<button type='button' onclick=\"mostrarAreaRespuesta($i, $id, '$id_comment' )\"
 										id='responseButton$i'>Responder</button>
 									<textarea id='toggleArea$i' class='respuestaArea' name='comment' id='comment' rows='1'></textarea>
 									
