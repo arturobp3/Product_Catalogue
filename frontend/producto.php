@@ -90,12 +90,14 @@
 											$html .= "
 													<p id='user'>".$result->comentarios()[$i]->respuestas[$j]->nombre."</p>
 													<div id='cajaRespuesta'>	
-														<p class='fecha'>Fecha: ".$result->comentarios()[$i]->respuestas[$j]->fecha."</p>
+														<p class='fecha'>".$result->comentarios()[$i]->respuestas[$j]->fecha."</p>
 														<p id='respuesta'>".$result->comentarios()[$i]->respuestas[$j]->comentario."</p>
 													</div>";
 										}
 									}
 									else $html .= '<p> No ha respondido nadie </p>';
+
+						$idComment = $result->comentarios()[$i]->_id;
 								
 									//Cierra id='toggleResponse'
 						$html .= "</div> 
@@ -103,7 +105,7 @@
 									<button type='button' onclick='mostrarAreaRespuesta($i, $id)' 
 										id='responseButton$i'>Responder</button>
 									<textarea id='toggleArea$i' class='respuestaArea' name='comment' id='comment' rows='1'></textarea>
-									<p id='mensaje$i'></p>
+									
 								</form>
 							</div>"; //Cierra id='cajaComentario'
 					}

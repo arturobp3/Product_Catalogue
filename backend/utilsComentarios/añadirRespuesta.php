@@ -13,12 +13,13 @@ $username = $user->username();
 $hoy = date("d-m-Y H:i:s");
 
 
-if(empty($_POST['comentario'])){
-    $error = 'Debes escribir un comentario primero';
+if(empty($_POST['respuesta'])){
+    $error = 'Debes escribir una respuesta primero';
 }
 else{
 
     $id_Prod = $_POST['idProd'];
+    $id_comment = $_POST['idComment'];
 
 
     $mongo = MongoDB::getInstanceMongoDB();
@@ -28,22 +29,22 @@ else{
     $bulk = new MongoDB\Driver\BulkWrite();
 
     //Establecemos la actualización que queremos hacer
-    $bulk->update(['_id' => $id_Prod], ['$push' => ['comentarios' => [
-        '_id' => (string) new MongoDB\BSON\ObjectId(),
-        'nombre' => $username,
-        'fecha' => date("d-m-Y H:i"),
-        'comentario' => $_POST['comentario'],
-        'respuestas' => [],
-    ] ] ] );
+    $bulk->update(['_id' => $id_Prod, 'comentarios._id' => $id_comment], ['$push' => ['comentarios.$.respuestas' => 
+        [
+            'nombre' => $username,
+            'fecha' => date("d-m-Y H:i"),
+            'comentario' => $_POST['respuesta'],
+        ] 
+    ] ] );
 
     //Realizamos la actualización
     $result = $connectMongo->executeBulkWrite('Product_Catalogue.InfoProducto', $bulk);
 
 
-    $html = "<h2 id='user'>".$username."</h2>
-        <div id='cajaComentario'>
+    $html = "<p id='user'>".$username."</p>
+        <div id='cajaRespuesta'>
         <p class='fecha'>".date("d-m-Y H:i")."</p>
-        <p id='comentario'>".$_POST['comentario']."</p>
+        <p id='respuesta'>".$_POST['respuesta']."</p>
         </div>";
 
 }

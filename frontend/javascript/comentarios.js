@@ -60,7 +60,7 @@ function mostrarRespuestas(i){
     } );
 }
 
-function mostrarAreaRespuesta(idx){
+function mostrarAreaRespuesta(idx, idProd){
 
     $(document).ready(function(){
         
@@ -79,11 +79,11 @@ function mostrarAreaRespuesta(idx){
         }
 
         else{
+            //Procesamos la respuesta que el usuario ha puesto
+            procesarRespuesta(idx, idProd);
+
             //Cambiamos a responder
             $('#responseButton'+idx).html("Responder");
-
-            //Procesamos la respuesta que el usuario ha puesto
-            procesarRespuesta(idx);
         }
 
         $( "#toggleArea"+idx).toggle( selectedEffect, 200); //Abrimos el area
@@ -91,26 +91,25 @@ function mostrarAreaRespuesta(idx){
 }
 
 //Procesa al respuesta mandando una petición AJAX
-function procesarRespuesta(idx, id){
+function procesarRespuesta(idx, id, id_comment){
+
+    //Texto escrito en la respuesta
+    var valor = $('#toggleArea'+idx).val();
 
     $(document).ready(function() {
 
         $.ajax({
             url: '../backend/utilsComentarios/añadirRespuesta.php', //A quien se lo envias
             type: 'post',                                           //Cómo se lo envias
-            data: { "respuesta": $('#toggleArea'+idx).val(), "idProd" : id }, //El qué le envias
+            data: { "respuesta": valor, "idProd" : id, "idComment" : id_comment }, //El qué le envias
             dataType: 'JSON',                                      //De qué manera responde
             success: function(response){                           //Qué haces si todo ha salido bien
                 if(response.error == ''){   //Si no ha habido error
      
-                    $('#mensaje'+idx).html("Has respondido el comentario");
                     $('#toggleArea'+idx).val("");
+
                     $('#toggleResponse'+idx).append(response.html);
                 }
-                else{
-                    $('#mensaje'+idx).html(response.error);
-                }
-
             }
             
         });
