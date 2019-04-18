@@ -3,6 +3,7 @@
         "informacion" : "Contiene la información de un producto",
         "comentarios" : [ 
             {
+                "_id" : "id del comentario",
                 "nombre" : "Arturo",
                 "fecha" : "Una fecha",
                 "comentario" : "Un comentario",

@@ -84,6 +84,8 @@ function mostrarAreaRespuesta(idx, idProd, id_comment){
 
             //Cambiamos a responder
             $('#responseButton'+idx).html("Responder");
+
+            $('#mensaje'+idx).html("");
         }
 
         $( "#toggleArea"+idx).toggle( selectedEffect, 200); //Abrimos el area

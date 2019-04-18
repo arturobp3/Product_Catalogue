@@ -393,12 +393,13 @@ h3{
 	align-items: center;
 	justify-content: space-around;
 	min-height: 50vh;
-	border: 2px solid black;
+	border-top: 3px solid #00303F;
 	padding: 8px;
 	margin-top: 4%;
 }
 
 .panel3 #texto{
+	margin-top: 2%;
 	margin-bottom: 2%;
 }
 

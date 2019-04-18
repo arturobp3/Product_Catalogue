@@ -95,7 +95,7 @@
 													</div>";
 										}
 									}
-									else $html .= '<p> No ha respondido nadie </p>';
+									else $html .= "<p id='mensaje$i'> No ha respondido nadie </p>";
 
 								
 						$id_comment = $result->comentarios()[$i]->_id;
