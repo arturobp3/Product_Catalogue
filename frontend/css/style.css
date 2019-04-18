@@ -263,6 +263,7 @@ button{
 	border: 3px solid #00303F;
 	padding: 15px;
 	font-weight: bolder;
+	cursor: pointer;
 }
 
 
@@ -428,7 +429,7 @@ h3{
 	background-color: #025E7A;
 }
 
-.panel3 form #submit:focus{
+.panel3 form #submit:focus, .panel3 #comentarios #responseForm button:focus{
 	outline: 0;
 }
 .panel3 form #submit:hover{
@@ -437,24 +438,20 @@ h3{
 
 .panel3 .fecha{
 	color: grey;
+	padding-bottom: 2mm;
 }
 
 
-
 .panel3 #comentarios{
-	border-left: 3px solid #00303F;
-	border-right: 3px solid #00303F;
-	border-top: 1px solid #00303F;
 	width: 70%;
+	
 }
 
 .panel3 #comentarios #user{
 	background-color: #00303F;
 	border-bottom: 1.5px solid white;
 	padding-left: 3%;
-}
-.panel3 #comentarios #user:hover{
-	background-color: #025E7A;
+	color: white;
 }
 
 .panel3 #comentarios #user:focus{
@@ -465,14 +462,39 @@ h3{
 .panel3 #comentarios #cajaComentario{
 	display: flex;
 	flex-direction: column;
-	align-content: center;
-	justify-content: space-between;
+	justify-content: space-around;
 	background-color: #CAE4DB;
 	color: #00303F;
 	font-weight: bolder;
-	/*border-bottom: 0.25px solid #00303F;*/
-	border: 3px solid green;
+	border: 3px solid #00303F;
 	padding: 2%;
+	margin-bottom: 2%;
+}
+
+.panel3 #comentarios #responseForm textarea{
+	width: 50%;
+	resize: none;
+	border-radius: 15px;
+	padding: 2px 20px;
+	color: #00303F;
+	font-weight: bolder;
+	font-size: 1em;
+	border: 3px solid #00303F;
+}
+
+.panel3 #comentarios #responseForm button{
+	padding: 2mm;
+}
+
+.panel3 #comentarios #cajaComentario .btnResponse{
+	width: 17%;
+	padding-bottom: 2mm;
+}
+
+.panel3 #comentarios #cajaComentario .btnResponse:hover{
+	color:  #025E7A;
+	font-size: 1.05em;
+	cursor:pointer;
 }
 
 .panel3 #comentarios #cajaComentario #comentario{
@@ -485,16 +507,19 @@ h3{
 	align-content: center;
 	justify-content: space-between;
 	height: auto;
-	width: 85%;
-	margin-left: 7%;
+	width: 87%;
+	margin-left: 6%;
 	margin-top: 2%;
-	border: 2px solid red;
+	background-color: #CAE4DB;
+	margin-bottom: 4%;
 }
 
 .panel3 #comentarios #cajaComentario .toggle #cajaRespuesta{
 	padding: 3%;
-	border: 2px solid blue;
+	border: 2px solid #00303F;
 }
+
+
 
 
 

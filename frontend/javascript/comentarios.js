@@ -3,12 +3,10 @@
 //Es lo mismo que: $(document).ready(function{
                         //Acordeon
                 // });
-$( function() {
-    $( "#comentarios").accordion({heightStyle: "content"});
-} );
 
 $(function(){
     $('.toggle').hide();
+    $('.respuestaArea').hide();
 });
 
 
@@ -29,7 +27,7 @@ function procesarComentario(id){
      
                     $('#mensaje').html("Comentario añadido correctamente");
                     $('#comment').val("");
-                    $('#comentarios').prepend(response.html);
+                    $('#comentarios').append(response.html);
                 }
                 else{
                     $('#mensaje').html(response.error);
@@ -40,6 +38,7 @@ function procesarComentario(id){
     });
 }
 
+//Código para las respuestas
 
 function mostrarRespuestas(i){
 
@@ -47,6 +46,7 @@ function mostrarRespuestas(i){
          
         var selectedEffect = "blind";
      
+        //Abrimos la caja de las respuestas
         $( "#toggleResponse"+i ).toggle( selectedEffect, 500);
 
         if($('#btnResponse'+i).text() == "Ver respuestas"){
@@ -58,4 +58,61 @@ function mostrarRespuestas(i){
     ;
 
     } );
+}
+
+function mostrarAreaRespuesta(idx){
+
+    $(document).ready(function(){
+        
+        var selectedEffect = "slide";
+     
+        //Si pone responder
+        if($('#responseButton'+idx).text() == "Responder"){
+
+            //Si no se han mostrado las respuestas
+            if($('#btnResponse'+idx).text() == "Ver respuestas"){
+                mostrarRespuestas(idx); //Abrimos las respuestas
+            }
+
+            //Cambiamos a enviar
+            $('#responseButton'+idx).html("Enviar");
+        }
+
+        else{
+            //Cambiamos a responder
+            $('#responseButton'+idx).html("Responder");
+
+            //Procesamos la respuesta que el usuario ha puesto
+            procesarRespuesta(idx);
+        }
+
+        $( "#toggleArea"+idx).toggle( selectedEffect, 200); //Abrimos el area
+    });
+}
+
+//Procesa al respuesta mandando una petición AJAX
+function procesarRespuesta(idx, id){
+
+    $(document).ready(function() {
+
+        $.ajax({
+            url: '../backend/utilsComentarios/añadirRespuesta.php', //A quien se lo envias
+            type: 'post',                                           //Cómo se lo envias
+            data: { "respuesta": $('#toggleArea'+idx).val(), "idProd" : id }, //El qué le envias
+            dataType: 'JSON',                                      //De qué manera responde
+            success: function(response){                           //Qué haces si todo ha salido bien
+                if(response.error == ''){   //Si no ha habido error
+     
+                    $('#mensaje'+idx).html("Has respondido el comentario");
+                    $('#toggleArea'+idx).val("");
+                    $('#toggleResponse'+idx).append(response.html);
+                }
+                else{
+                    $('#mensaje'+idx).html(response.error);
+                }
+
+            }
+            
+        });
+    });
 }

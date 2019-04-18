@@ -32,7 +32,7 @@ else{
         'nombre' => $username,
         'fecha' => date("d-m-Y H:i"),
         'comentario' => $_POST['comentario'],
-        'respuestas' => [] 
+        'respuestas' => [],
     ] ] ] );
 
     //Realizamos la actualización

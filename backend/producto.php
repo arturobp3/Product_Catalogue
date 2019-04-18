@@ -116,8 +116,10 @@ class Producto {
                 $rsMongoCursor = $connectMongo->executeQuery("Product_Catalogue.InfoProducto", $query);
                 //Ha devuelto un cursor
 
+
                 //Convertimos los datos del cursor en un array
                 $datosMongoDB = $rsMongoCursor->toArray()[0];
+
                 
                 $fila = $rs->fetch_assoc();
                 $producto = new Producto($fila['nombre'],  $fila['cantidad'], $fila['categoria'],

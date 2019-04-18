@@ -81,14 +81,15 @@
 								<div id='cajaComentario'>
 									<p class='fecha'>".$result->comentarios()[$i]->fecha."</p>
 									<p id='comentario'>".$result->comentarios()[$i]->comentario."</p>
-									<a id='btnResponse$i' onclick='mostrarRespuestas($i)'>Ver respuestas</a>
+									<a id='btnResponse$i' class='btnResponse' onclick='mostrarRespuestas($i)'>Ver respuestas</a>
 									<div id='toggleResponse$i' class='toggle'>";
 
 									if(sizeof($result->comentarios()[$i]->respuestas) > 0){
 										for($j = 0; $j < sizeof($result->comentarios()[$i]->respuestas); $j++){
 
-											$html .= "<div id='cajaRespuesta'>
-														<p id='nombre'>".$result->comentarios()[$i]->respuestas[$j]->nombre."</p>
+											$html .= "
+													<p id='user'>".$result->comentarios()[$i]->respuestas[$j]->nombre."</p>
+													<div id='cajaRespuesta'>	
 														<p class='fecha'>Fecha: ".$result->comentarios()[$i]->respuestas[$j]->fecha."</p>
 														<p id='respuesta'>".$result->comentarios()[$i]->respuestas[$j]->comentario."</p>
 													</div>";
@@ -99,9 +100,10 @@
 									//Cierra id='toggleResponse'
 						$html .= "</div> 
 								<form method='post' id='responseForm'>
-									<textarea name='comment' id='comment' rows='1'></textarea>
-									<button type='button' onclick='procesarRespuesta($id)' 
-										id='responseButton'> Responder </button>
+									<button type='button' onclick='mostrarAreaRespuesta($i, $id)' 
+										id='responseButton$i'>Responder</button>
+									<textarea id='toggleArea$i' class='respuestaArea' name='comment' id='comment' rows='1'></textarea>
+									<p id='mensaje$i'></p>
 								</form>
 							</div>"; //Cierra id='cajaComentario'
 					}
