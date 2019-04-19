@@ -1,3 +1,7 @@
+<script src='./javascript/buscador.js'></script>
+
+
+
 <header>
 
 	<a href="index.php" id="logo"><p>PRODUCT CATALOGUE</p></a>
@@ -5,8 +9,9 @@
 	<?php
 		if (isset($_SESSION["login"]) && ($_SESSION["login"]===true)){
 			echo '<div id="formCabecera">
-					<form action="#">
-						<input type="search" name="searchMenu" placeholder=" Buscar un producto">
+					<form action="listaProductos.php" method="get">
+						<input id="buscador" onkeyup="actualizaBuscador()" type="search" name="searchMenu" 
+								placeholder=" Buscar un producto" autocomplete="off">
 					</form>
 				</div>' . 
 				'<div id="enlaces">

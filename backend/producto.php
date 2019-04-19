@@ -206,5 +206,92 @@ class Producto {
         }
     }
 
+    public static function buscarProductos($string){
+        $app = MySQL::getInstanceMySQL();
+        $conn = $app->conexionMySQL();
+
+        $string = $conn->real_escape_string($string);
+
+        if($string === '') return false;
+
+        $query = "SELECT * FROM producto U WHERE U.nombre LIKE '%{$string}%'";
+
+
+        $rs = $conn->query($query);
+        $result = false;
+
+        if ($rs) {
+            if ( $rs->num_rows > 0) {
+
+                for($i = 0; $i < $rs->num_rows; $i++){
+                    $fila = $rs->fetch_assoc();
+                    $producto = new Producto($fila['nombre'],  $fila['cantidad'], $fila['categoria'],
+                                        $fila['marca'], $fila['precioEuros']);
+                    $producto->id = $fila['id'];
+
+                    $result[] = $producto;
+                }
+            }
+            $rs->free();
+            return $result;
+            
+        } else {
+            echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+
+        return $result;
+    }
+
+    //genera 10 numeros aleatorios entre 1 y el maximo de productos y obtiene esos productos
+    //por su id
+    public static function productosAleatorios(){
+        $app = MySQL::getInstanceMySQL();
+        $conn = $app->conexionMySQL();
+
+        $rs = $conn->query("SELECT * FROM producto");
+
+        $result = false;
+
+        if ($rs) {
+            //obtenemos 10 id's aleatorios entre 1 y el maximo de productos
+            $arrayIndices = self::getRandArray(1, $rs->num_rows);
+
+            //Obtenemos esos productos pertenecientes a los id's previamente seleccionados
+            foreach($arrayIndices as $i){
+                $rs = $conn->query("SELECT * FROM producto U WHERE U.id = $i");
+
+                $fila = $rs->fetch_assoc();
+
+                $producto = new Producto($fila['nombre'],  $fila['cantidad'], $fila['categoria'],
+                                    $fila['marca'], $fila['precioEuros']);
+                $producto->id = $fila['id'];
+
+
+                $result[] = $producto;
+            }
+
+            $rs->free();
+        }
+
+        return $result;
+
+    }
+
+    private function getRandArray($min, $max){
+ 
+        $array = array();
+
+        while(sizeof($array) < 10){
+            $num = rand($min, $max);
+
+            if(! in_array($num, $array)){
+                $array[] = $num; 
+            }
+        }
+
+        return $array;
+    }
+
     
 }
