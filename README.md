@@ -9,10 +9,8 @@ Therefore, I made a web-app similar to Amazon where you can: login and register,
 
 ### [Download MongoDB Server](https://www.mongodb.com/download-center/community)
 
-> OPTIONAL
+### [Download Robo 3T - MongoDB GUI ](https://robomongo.org/download) (Optional)
 
-### [Download Robo 3T (MongoDB GUI)](https://robomongo.org/download)
-  
 You have to make sure that both ports (in MongoDB and Robo 3T) are the 27017 one
   
 
