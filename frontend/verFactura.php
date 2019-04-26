@@ -11,7 +11,7 @@ require_once('../backend/utilsPedidos/facturaXML.php');
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
 	<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
 	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-	<title>Factura | Product Catalog</title>
+	<title>Factura | Product Catalogue</title>
 </head>
 
 <body style="background-color: white">

@@ -11,7 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
 	<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
 	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-	<title>Registrarse | Product Catalog</title>
+	<title>Registrarse | Product Catalogue</title>
 </head>
 
 <body>

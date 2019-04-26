@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<title>Lista de la Compra | Product Catalog</title>
+	<title>Lista de la Compra | Product Catalogue</title>
 	<meta charset="UTF-8">
 
 	<link rel="stylesheet" type="text/css" href="css/style.css">

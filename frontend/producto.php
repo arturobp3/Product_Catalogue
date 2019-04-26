@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<title>Producto | Product Catalog</title>
+	<title>Producto | Product Catalogue</title>
 	<meta charset="UTF-8">
 
 	<link rel="stylesheet" type="text/css" href="css/style.css">

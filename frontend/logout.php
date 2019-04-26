@@ -15,7 +15,7 @@ session_destroy();
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<title>Inicio | Product Catalog</title>
+	<title>Inicio | Product Catalogue</title>
 	<meta charset="UTF-8">
 
 	<link rel="stylesheet" type="text/css" href="css/style.css">

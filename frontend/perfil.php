@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<title>Perfil | Product Catalog</title>
+	<title>Perfil | Product Catalogue</title>
 	<meta charset="UTF-8">
 
 	<link rel="stylesheet" type="text/css" href="css/style.css">
