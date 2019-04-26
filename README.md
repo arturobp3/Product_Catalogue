@@ -5,18 +5,18 @@ Therefore, I made a web-app similar to Amazon where you can: login and register,
 
 # Steps to use the application:
  
-[<b>Download XAMPP</b>](https://www.apachefriends.org/es/download.html)
+### [Download XAMPP](https://www.apachefriends.org/es/download.html)
 
-[<b>Download MongoDB Server</b>](https://www.mongodb.com/download-center/community)
+### [Download MongoDB Server](https://www.mongodb.com/download-center/community)
 
 > OPTIONAL
 
-[<b> Download Robo 3T (MongoDB GUI)<b>](https://robomongo.org/download)
+### [Download Robo 3T (MongoDB GUI)](https://robomongo.org/download)
   
 You have to make sure that both ports (in MongoDB and Robo 3T) are the 27017 one
   
 
-[<b>Install the MongoDB driver for PHP</b>](https://pecl.php.net/package/mongodb/1.5.3/windows)
+### [Install the MongoDB driver for PHP](https://pecl.php.net/package/mongodb/1.5.3/windows)
 
 Your MongoDB version must match that of PHP. You should also pay attention to architecture and Thread Safe.
 To that end, use the info.php file which I provided in this repository.
@@ -26,9 +26,9 @@ Now, edit 'php.ini', which is located in 'xampp/php', and add the next statement
 extension=php_mongodb.dll
 ```
 
-<b>Execute mongod.exe</b>
+### Execute mongod.exe
 
-<b>Now, execute mongo.exe. </b>
+Now, execute mongo.exe.
 Here, execute the following commands:
 ```
 use Product_Catalogue
@@ -39,7 +39,7 @@ db.createCollection("InfoProducto")
 ```
 and this one will create the necessary collection for comments.
 
-<b>Open the system console (CMD): </b>
+### Open the system console (CMD):
 Find the 'bin' folder in the MongoDB Server path and type the next command:
 ```
 mongoimport -h localhost:27017 --db Product_Catalogue --collection InfoProducto --file C:\xampp\htdocs\Product_Catalogue\backend\MongoDB\MongoDB_database.json
@@ -48,11 +48,11 @@ mongoimport -h localhost:27017 --db Product_Catalogue --collection InfoProducto 
 
 This command will import the necessary documents into our database.
 
-<b>Open the XAMPP control panel and start Apache and MySQL</b>
+### Open the XAMPP control panel and start Apache and MySQL
 
-<b>Import in phpMyAdmin the SQL files provided in this repository</b>
+### Import in phpMyAdmin the SQL files provided in this repository
 
-<b>Try my aplication typing in the browser the next URL</b>
+### Try my aplication typing in the browser the next URL
 ```
 localhost/Product_Catalogue/frontend/index.php
 ```
