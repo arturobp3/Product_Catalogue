@@ -40,11 +40,6 @@
 
 
 			}
-			else{
-				echo '<div id="panelVacio">
-						<p> Informacion de qué va el proyecto y explicar que esta hecho para una asignatura</p>
-					</div>';
-			}
 	?>
 
 

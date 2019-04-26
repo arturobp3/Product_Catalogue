@@ -17,7 +17,7 @@ date_default_timezone_get();
  * Parámetros de conexión a la BD MySQL
  */
 define('BD_HOST', 'localhost');
-define('BD_NAME', 'product_catalog');
+define('BD_NAME', 'product_catalogue');
 define('BD_USER', 'root');
 define('BD_PASS', '');
 
