@@ -18,7 +18,7 @@ You have to make sure that both ports (in MongoDB and Robo 3T) are the 27017 one
 
 Your MongoDB version must match that of PHP. You should also pay attention to architecture and Thread Safe.
 To that end, use the info.php file which I provided in this repository.
-Then, copy the 'php_mongodb.dll' file and paste it into the path xampp/php/ext 
+Then, copy the 'php_mongodb.dll' file and paste it into the path xampp/php/ext. 
 Now, edit 'php.ini', which is located in 'xampp/php', and add the next statement:
 ```
 extension=php_mongodb.dll
