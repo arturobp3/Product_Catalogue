@@ -399,7 +399,7 @@ h3{
 	align-items: center;
 	justify-content: space-around;
 	min-height: 50vh;
-	border-top: 3px solid #00303F;
+	border-top: 3px solid grey;
 	padding: 8px;
 	margin-top: 4%;
 }
